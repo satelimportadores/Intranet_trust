@@ -1,3 +1,7 @@
+<?php 
+  //$pagina = basename($_SERVER['PHP_SELF']);
+  //echo $pagina; 
+ ?>
 <ul class="nav navbar-nav side-nav" id="sidebar">
               
               <li class="collapsed-content"> 
@@ -105,7 +109,8 @@
                     </ul>
                   </li>
 
-                  <li class="dropdown active open">
+                  <!-- <li class="dropdown active open"> -->
+                  <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="fa fa-desktop"></i> Example Pages <b class="fa fa-plus dropdown-plus"></b>
                       <span class="label label-greensea">mails</span>
@@ -142,6 +147,7 @@
                           <span class="label label-greensea">new</span>
                         </a>
                       </li>
+                      <!-- <li class="active"> -->
                       <li class="active">
                         <a href="blank-page.html">
                           <i class="fa fa-caret-right"></i> Blank Page
@@ -353,5 +359,3 @@
 
 
 <script src="assets/js/minimal.min.js"></script>
-
-

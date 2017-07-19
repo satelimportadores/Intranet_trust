@@ -1,7 +1,3 @@
-<?php 
-  echo $_SERVER['PHP_SELF'];
-  echo $_SERVER['script_name'];
- ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -20,6 +16,9 @@
     <link rel="stylesheet" href="assets/css/vendor/bootstrap/bootstrap-dropdown-multilevel.css">
 
     <link href="assets/css/minimal.css" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.js"></script>
+    <script>$( "#menu" ).load( "menu.php" );</script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -920,8 +919,8 @@
 
 
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+
+
 
     
     <!-- Include all compiled plugins (below), or include individual files as needed -->
