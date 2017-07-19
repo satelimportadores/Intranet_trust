@@ -1,3 +1,7 @@
+<?php 
+  echo $_SERVER['PHP_SELF'];
+  echo $_SERVER['script_name'];
+ ?>
 <!DOCTYPE html>
 <html>
   <head>
