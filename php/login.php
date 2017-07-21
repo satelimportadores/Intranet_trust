@@ -20,7 +20,7 @@ if(!empty($_POST)){
 
 			$sql1= "select * from trust_users where (username=\"$username\" or email=\"$username\") and password=\"$password\" and activo='1' ";
 			
-			$query = $con->query($sql1);
+			$query = $con->query($sql1) or trigger_error($con->error);
 			while ($r=$query->fetch_array()) {
 				$user_id=$r["id"];
 				$user_permisos=$r["nivel_permisos"];

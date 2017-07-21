@@ -14,11 +14,17 @@
     <link rel="stylesheet" href="assets/js/vendor/videobackground/css/jquery.videobackground.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap-checkbox.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap/bootstrap-dropdown-multilevel.css">
+   <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen.min.css">
+    <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen-bootstrap.css">
 
     <link href="assets/css/minimal.css" rel="stylesheet">
+    <link href="assets/css/registro_cheques.css" rel="stylesheet">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.js"></script>
     <script>$( "#menu" ).load( "menu.php" );</script>
+    <script src="js/registro_cheques.js"></script>
+    <script src="js/registro_cheques_tabla.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -439,9 +445,297 @@
           <div class="pageheader">
             
 
-            <h2><i class="fa fa-file-o" style="line-height: 48px;padding-left: 2px;"></i> Blank Page <span>// Place subtitle here...</span></h2>
-            
+            <h2><i class="fa fa-file-o" style="line-height: 48px;padding-left: 2px;"></i>Cheques de<strong>TRUST CORPORATION</strong></h2>
+			
+			 <!--cheques-->
+							
 
+<!--//////////////////////////////////////////////////////-->
+                      <div class="col-md-12">
+
+
+
+                <!-- tile -->
+                <section class="tile color transparent-black">
+<form class="form-horizontal" role="form" action="php/e_registro_cheques.php" method="POST" enctype="multipart/form-data" parsley-validate id="basicvalidations">
+
+            <fieldset id="info">
+                  <!-- tile header -->
+                  <div class="tile-header">
+                    <h1><strong>Información del cheque</strong></h1>
+                    <div class="controls">
+                      <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
+                      <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
+                      <a href="#" class="remove"><i class="fa fa-times"></i></a>
+                    </div>
+                  </div>
+                  <!-- /tile header -->
+
+                  <!-- tile body -->
+                  <div class="tile-body">
+                    
+                    
+                      
+                      <div class="form-group">
+                        <label for="bancos" class="col-sm-4 control-label">Banco Emisor</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="bancos" id="bancos" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="num_cheq" class="col-sm-4 control-label">Numero de Cheque</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="num_cheq" name="num_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="benef" class="col-sm-4 control-label">Beneficiario</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="benef" name="benef" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="monto" class="col-sm-4 control-label">Monto</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="monto" name="monto" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="fecha_cheq" class="col-sm-4 control-label">Fecha Cheque</label>
+                        <div class="col-sm-8">
+                          <input type="date" class="form-control" name="fecha_cheq" id="fecha_cheq" parsley-trigger="change" parsley-minlength="4" parsley-type="dateIso" parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="fecha_con" class="col-sm-4 control-label">Fecha Consignación</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" readonly="" name="fecha_con" id="fecha_con" parsley-trigger="change" parsley-minlength="4" parsley-type="dateIso" parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="endoso" class="col-sm-4 control-label">Endoso</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="endoso" readonly="" name="endoso" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="colorpicker-rgb" class="col-sm-4 control-label">File Upload field</label>
+                        <div class="col-sm-8">
+                          <div class="input-group">
+                                <i class="fa fa-upload"></i><input type="file" id="file" name="file[]" multiple="">
+                           <div class="descripcion_files"></div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group form-footer">
+                        <div class="col-sm-offset-4 col-sm-8">
+                          <button type="button" class="btn btn-primary" id="btn-1">Siguiente</button>
+                        </div>
+                      </div>
+
+                </div>
+                  <!-- /tile body -->
+
+                  </fieldset>
+
+                  <fieldset id="calcu">
+                      <!-- tile header -->
+                      <div class="tile-header">
+                        <h1><strong>Calculadora de cambio</strong></h1>
+                        <div class="controls">
+                          <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
+                          <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
+                          <a href="#" class="remove"><i class="fa fa-times"></i></a>
+                        </div>
+                      </div>
+                      <!-- /tile header -->
+
+                                        <!-- tile body -->
+                  <div class="tile-body">
+                    
+                    
+                      
+                      <div class="form-group">
+                        <label for="interes" class="col-sm-4 control-label">Tasa de Interés</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="interes" id="interes" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                            <option value="">Please choose</option>
+
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="num_dias" class="col-sm-4 control-label">Numero de Días</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="num_dias" name="num_dias" parsley-trigger="change" parsley-required="true" parsley-minlength="2" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="cuota_dia" class="col-sm-4 control-label">Cuota Diaria</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="cuota_dia" name="cuota_dia" parsley-trigger="change" parsley-required="true" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="val_int" class="col-sm-4 control-label">Valor Interés</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="val_int" name="val_int" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="val_cheq" class="col-sm-4 control-label">Valor del Cheque a Girar</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" id="val_cheq" name="val_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="resp" class="col-sm-4 control-label">Responsable</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="resp" id="resp" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                            <option value="">Seleccione responsable</option>
+                                <option value="Alejandro Téllez">Alejandro Téllez</option>
+                                <option value="Marina Santamaria">Marina Santamaria</option>
+                                <option value="Mery Ibáñez">Mery Ibáñez</option>
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group form-footer">
+                        <div class="col-sm-offset-4 col-sm-8">
+                          <button type="button" class="btn btn-danger" id="btn-2" >Anterior</button>
+                          <button type="button" class="btn btn-primary" id="btn-3" >Siguiente</button>
+                        </div>
+                      </div>
+
+                </div>
+                  <!-- /tile body -->
+
+                  </fieldset>
+
+
+        <fieldset id="cheques">
+                  
+                    <!-- tile header -->
+                      <div class="tile-header">
+                        <h1><strong>Simulador</strong></h1>
+                        <div class="controls">
+                          <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
+                          <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
+                          <a href="#" class="remove"><i class="fa fa-times"></i></a>
+                        </div>
+                      </div>
+                      <!-- /tile header -->
+
+
+                    <div id="cheq_ingres" class="row center-block">
+                    <div class="col-md-2"></div>
+                    <table   class="tabla col-md-7 col-xs-7">
+                      <tr>
+                        <td width="200" rowspan="2"><b><h4><div id="bank">Bancamia</div></h4></b></td>
+                        <td><b>Fecha:</b></td>
+                        <td><div id="fecha"></div></td>
+                        <td><b># Cheque:</b></td>
+                        <td><div id="cheq"></div></td>
+                      </tr>
+                      <tr>
+                        <td><b>COP</b></td>
+                        <td colspan="3"><div class="moneda"><i class="material-icons"><strong>$</strong></i>
+                        <div class='m' id="m"></div></div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Páguese A</b></td>
+                        <td class="izq" colspan="4"><div class="border" id="persona"></div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Valor en letras</b></td>
+                        <td class="izq" colspan="4"><div class="border" id="letras"></div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Firma</b></td>
+                        <td class="izq" colspan="4"><div class="border"></div></td>
+                      </tr>
+                    </table>
+
+                    <div class="col-md-3"></div>
+                    
+                    </div>
+                    <br>
+                    <div id="cheq_egres" class="row center-block">
+
+                    <div class="col-md-2"></div>
+                    <table   class="tabla2 col-md-7 col-xs-7">
+                      <tr>
+                        <td width="200" rowspan="2"><b><h4><div id="bank2">Bancamia</div></h4></b></td>
+                        <td><b>Fecha:</b></td>
+                        <td><div id="fecha2"></div></td>
+                        <td><b># Cheque:</b></td>
+                        <td><div>Chequera</div></td>
+                      </tr>
+                      <tr>
+                        <td><b>COP</b></td>
+                        <td colspan="3"><div class="moneda2"><i class="material-icons"><strong>$</strong></i>
+                        <div class='m' id="m2"></div></div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Páguese A</b></td>
+                        <td class="izq" colspan="4"><div class="border2">Beneficiario...</div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Valor en letras</b></td>
+                        <td class="izq" colspan="4"><div class="border2" id="letras2"></div></td>
+                      </tr>
+                      <tr>
+                        <td class="izq"><b>Firma</b></td>
+                        <td class="izq" colspan="4"><div class="border2"></div></td>
+                      </tr>
+                    </table>
+                    </div>
+                  <br>
+                <div class="col-md-12">
+                      <div class="form-group form-footer">
+                        <div class="col-sm-offset-4 col-sm-8">
+                        <button type="button" class="btn btn-danger" id="btn-4" >Anterior</button>
+                          <button type="submit" id="envio" name="envio" class="btn btn-primary">Enviar</button>
+
+                          
+                        </div>
+                      </div>
+              </form>
+              </div>
+              
+        </fieldset>
+
+
+    </section>
+                <!-- /tile -->
+
+
+
+
+              </div>
+              <!-- /col 6 -->
+            
+			<!--cheques-->
             <div class="breadcrumbs">
               <ol class="breadcrumb">
                 <li>You are here</li>
@@ -471,12 +765,6 @@
 
               <!-- col 12 -->
               <div class="col-md-12">
-
-
-
-
-
-
 
 
               </div>
@@ -933,6 +1221,10 @@
     <script type="text/javascript" src="assets/js/vendor/animate-numbers/jquery.animateNumbers.js"></script>
     <script type="text/javascript" src="assets/js/vendor/videobackground/jquery.videobackground.js"></script>
     <script type="text/javascript" src="assets/js/vendor/blockui/jquery.blockUI.js"></script>
+
+    <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
+    <script src="assets/js/vendor/parsley/parsley.min.js"></script>
+
     <script src="js/menu.js"></script>
     
 
