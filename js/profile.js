@@ -180,6 +180,8 @@ var guardar = function(){
 				}else{
 
 					//Muy pocas palabras
+					$('#errortexto').fadeIn().html('<code>El texto debe tener mas de 10 caracteres</code>')
+					$("#errortexto").fadeOut(4000);
 					$('#comentarios').focus();
 				}
 

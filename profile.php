@@ -805,6 +805,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   <form id="form_coments" enctype="multipart/form-data">
                       <div class="feed-form">
                         <textarea class="form-control" name="comentarios" id="comentarios" placeholder="Escribir un comentario..." rows="5"></textarea>
+                        <div id="errortexto"></div>
                         <div class="post-toolbar">
                           <a href="#" title="Add File" id="adjunto" class="btn btn-default"><i class="fa fa-paperclip"></i></a>
                           <a href="#" title="Add File" id="adjuntono" class="btn btn-danger"><i class="fa fa-paperclip"></i></a>
