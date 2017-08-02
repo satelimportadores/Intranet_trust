@@ -153,28 +153,35 @@ var guardar = function(){
 		}else{
 
 			CantComents = $('#comentarios').val().length;
+			alert(CantComents);
 			var datos = $('#form_coments').serialize();
 			var url = 'php/e_contacts_comentarios.php?sql02';
-			//Mandar datos por AJAX
-				$.ajax({
-					url: url,
-					type: 'POST',
-					data: datos,
-				})
-				.done(function(data) {
-					console.log(data);
-					console.log("success");
-					ver_comentarios();
-					$('#form_coments')[0].reset();
-				})
-				.fail(function() {
-					console.log("error");
-				})
-				.always(function() {
-					console.log("complete");
-				});
-				
-			//Mandar datos por AJAX
+				if (CantComents > 10) {
+					//Mandar datos por AJAX
+						$.ajax({
+							url: url,
+							type: 'POST',
+							data: datos,
+						})
+						.done(function(data) {
+							console.log(data);
+							console.log("success");
+							ver_comentarios();
+							$('#form_coments')[0].reset();
+						})
+						.fail(function() {
+							console.log("error");
+						})
+						.always(function() {
+							console.log("complete");
+						});
+						
+					//Mandar datos por AJAX
+				}else{
+
+					//Muy pocas palabras
+					$('#comentarios').focus();
+				}
 
 			
 		}
