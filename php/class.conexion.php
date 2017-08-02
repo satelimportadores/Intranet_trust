@@ -18,12 +18,6 @@ class Conexion extends mysqli {
         
     }
 
-    public function recorrer($y){
-
-    	return mysqli_fetch_array($y);
-
-    }
-    
     
     
 }

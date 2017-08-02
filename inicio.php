@@ -1,3 +1,13 @@
+<?php 
+session_start();
+if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+  print "<script>alert(\"Acceso invalido!\");window.location='index.php';</script>";
+}
+$user_id = $_SESSION["user_id"];
+$user_nombre = $_SESSION["user_nombre"];
+$user_permisos = $_SESSION["nivel_permisos"];
+?>
+
 <!DOCTYPE html>
 <html>
   <head>

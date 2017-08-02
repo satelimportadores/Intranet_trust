@@ -8,6 +8,30 @@ $user_nombre = $_SESSION["user_nombre"];
 $user_permisos = $_SESSION["nivel_permisos"];
 ?>
 
+<?php
+  include_once('php/class.conexion.php');
+?>
+<?php
+
+  //traer registro de clientes letra A
+$letra = 'A';
+if (isset($_REQUEST['letra'])) {
+  $letra = $_REQUEST['letra'];
+}
+  
+
+  $cliente = new Conexion;
+  $sql01 = "SELECT ITC.cardcode,ITC.cardname,ITC.direccion,ITC.telefono,ITC.paginaweb,ITC.sector,ITC.forma_pago,ITC.ciudad,ITC.email,(SELECT CONCAT(ITCC.nombre,' ',ITCC.apellido) FROM intranet_trust_clientes_contactos ITCC WHERE ITC.cardcode = ITCC.cardcode LIMIT 1) as  persona_contacto FROM intranet_trust_clientes ITC WHERE ITC.cardname LIKE 'A%' ORDER BY ITC.cardname ASC";
+  $clientes = $cliente->query($sql01) or trigger_error($cliente->error);
+  
+
+$cliente->close();
+
+//traer registro de clientes letra A
+
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -473,16 +497,44 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
 
-
-<!-- CONTENIDO -->
             <!-- row -->
             <div class="row">
 
               <!-- col 12 -->
               <div class="col-md-12">
-        
+
+                <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+                      <ul class="pagination pagination-split">
+                        <li><a href="contacts.php?letra=A">A</a></li>
+                        <li><a href="contacts.php?letra=B">B</a></li>
+                        <li><a href="contacts.php?letra=C">C</a></li>
+                        <li><a href="contacts.php?letra=D">D</a></li>
+                        <li><a href="contacts.php?letra=E">E</a></li>
+                        <li><a href="contacts.php?letra=F">F</a></li>
+                        <li><a href="contacts.php?letra=G">G</a></li>
+                        <li><a href="contacts.php?letra=H">H</a></li>
+                        <li><a href="contacts.php?letra=I">I</a></li>
+                        <li><a href="contacts.php?letra=J">J</a></li>
+                        <li><a href="contacts.php?letra=K">K</a></li>
+                        <li><a href="contacts.php?letra=L">L</a></li>
+                        <li><a href="contacts.php?letra=M">M</a></li>
+                        <li><a href="contacts.php?letra=N">N</a></li>
+                        <li><a href="contacts.php?letra=O">O</a></li>
+                        <li><a href="contacts.php?letra=P">P</a></li>
+                        <li><a href="contacts.php?letra=Q">Q</a></li>
+                        <li><a href="contacts.php?letra=R">R</a></li>
+                        <li><a href="contacts.php?letra=S">S</a></li>
+                        <li><a href="contacts.php?letra=T">T</a></li>
+                        <li><a href="contacts.php?letra=U">U</a></li>
+                        <li><a href="contacts.php?letra=V">V</a></li>
+                        <li><a href="contacts.php?letra=W">W</a></li>
+                        <li><a href="contacts.php?letra=Y">Y</a></li>
+                        <li><a href="contacts.php?letra=Z">Z</a></li>
+                      </ul>
+                    </div>
 
 
+                  
 
 
 
@@ -492,11 +544,119 @@ $user_permisos = $_SESSION["nivel_permisos"];
               <!-- /col 12 -->
 
 
+  <!--contenido-->
+                        <?php
+  while ($r=$clientes->fetch_array()) {
+    echo "<div class='col-md-4'>";
+                echo "<!-- tile -->";
+                echo "<section class='tile color transparent-black'>";
+
+
+
+
+                  echo "<!-- tile header -->";
+                  echo "<div class='tile-header nopadding'>";
+                    echo "<div class='controls'>";
+                      echo "<a href='#' class='minimize'><i class='fa fa-chevron-down'></i></a>";
+                      echo "<a href='#' class='refresh'><i class='fa fa-refresh'></i></a>";
+                      echo "<a href='#' class='remove'><i class='fa fa-times'></i></a>";
+                    echo "</div>";
+                  echo "</div>";
+                  echo "<!-- /tile header -->";
+
+                  echo "<!-- tile widget -->";
+                  echo "<div class='tile-widget color transparent-white rounded-top-corners'>";
+                    
+                    echo "<div class='user-card'>";
+                      echo "<h4><strong>$r[cardname]</strong></h4>";
+                      echo "<ul class='profile-controls inline'>";
+                        echo "<li class='mailto'><a href='profile.php?cardcode=$r[cardcode]'><i class='fa fa-eye'></i>Ver perfil</a></li>";
+                        echo "<li class='avatar'>";
+                      //contar los comentarios por comen
+                        $comen = new Conexion;
+                        $sql01 = "SELECT COUNT(id) as cant FROM intranet_trust_clientes_comentarios WHERE cardcode = \"$r[cardcode]\"";
+                        $Rcomen = $comen->query($sql01) or trigger_error($comen->error);
+                        $s=$Rcomen->fetch_array();
+                        $cantidad = $s['cant'];
+
+                            if ($cantidad <= 5) {
+                                echo "<li class='avatar'><img src='assets/images/user03.png' alt='' class='img-circle profile-photo'></li>";
+                            }
+                            if ($cantidad >= 6 && $cantidad < 10 ) {
+                                echo "<li class='avatar'><img src='assets/images/user02.png' alt='' class='img-circle profile-photo'></li>";
+                            }
+                            if ($cantidad >= 10) {
+                                echo "<li class='avatar'><img src='assets/images/user01.png' alt='' class='img-circle profile-photo'></li>";
+                            }  
+                      //contar los comentarios por comen
+                        echo "</li>";
+                        echo "<li class='callto' id='make-call'>";
+                          echo "<a href='editar.php?cardcode=$r[cardcode]'>";
+                            echo "<span class='call'>   Editar<i class='fa fa-edit'></i></span>";
+                          echo "</a>";
+                        echo "</li>";
+                      echo "</ul>";
+                       if ($r['persona_contacto'] != "") {
+                          echo "<h6>$r[persona_contacto]</h6>";
+                        }else{
+                          echo "<h6>No existe persona de contacto</h6>";
+                        }
+                      echo "$r[sector]";
+                      echo "<ul class='list-unstyled'>";
+                      echo "<i class='fa fa-phone'> $r[telefono]</i>";
+
+                       if ($r['direccion'] != "") {
+                          echo "<li><i class='fa fa-home'></i> $r[direccion] </li>";
+                        }else{
+                          echo "<h6>No existe dirección</h6>";
+                        }
+
+                      echo "<div class='social-networks'>";
+                        echo "<a href='#'><i class='fa fa-facebook-square'></i></a>";
+                        echo "<a href='#'><i class='fa fa-google-plus-square'></i></a>";
+                        echo "<a href='#'><i class='fa fa-twitter'></i></a>";
+                        echo "<a href='#'><i class='fa fa-github-square'></i></a>";
+                        echo "<a href='#'><i class='fa fa-dribbble'></i></a>";
+                      echo "</div>";
+                    echo "</div>                       ";
+
+                  echo "</div>";
+                  echo "<!-- /tile widget -->";
+
+                  echo "<!-- tile body -->";
+                  echo "<div class='tile-body color transparent-black textured rounded-bottom-corners'>";
+                    echo "<ul class='inline divided social-feed'>";
+                      echo "<li>";
+                        echo "<h4>126</h4>";
+                        echo "Tweets";
+                      echo "</li>";
+                      echo "<li>";
+                        echo "<h4>324</h4>";
+                        echo "Following";
+                      echo "</li>";
+                      echo "<li>";
+                        echo "<h4>1254</h4>";
+                       echo " Followers";
+                      echo "</li>";
+                    echo "</ul>";
+                  echo "</div>";
+                  echo "<!-- /tile body -->";
+                
+
+
+                echo "</section>";
+                echo "<!-- /tile -->";
+    echo "</div>";
+  }
+?>
+
+                      <!--contenido-->
+
+
+
               
             </div>
             <!-- /row -->
-      
-<!-- CONTENIDO -->
           
 
 
@@ -945,14 +1105,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
     <script src="js/menu.js"></script>
 
-    <script>
-    $(function(){
-
-      
-      
-    })
-      
-    </script>
   </body>
 </html>
       
