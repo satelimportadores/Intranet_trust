@@ -41,6 +41,11 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
+                        <a href="cliente_nuevo.php">
+                          <i class="fa fa-caret-right"></i>Cliente nuevo
+                        </a>
+                      </li>
+                      <li>
                         <a href="contacts.php">
                           <i class="fa fa-caret-right"></i>Clientes
                         </a>

@@ -532,14 +532,6 @@ $cliente->close();
                         <li><a href="contacts.php?letra=Z">Z</a></li>
                       </ul>
                     </div>
-
-
-                  
-
-
-
-
-
               </div>
               <!-- /col 12 -->
 
@@ -1091,7 +1083,7 @@ $cliente->close();
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery_minimal.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js"></script>

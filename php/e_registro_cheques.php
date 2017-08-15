@@ -37,8 +37,11 @@ if (isset($_REQUEST['envio'])) {
 	$archivo = normaliza($archivo);
 	$dir = "../archivos_cheques/";
 	$dir = $dir.$archivo;
+	$banco_gira = $_REQUEST['banco_gira'];
+	$cuenta_gira = $_REQUEST['cuenta_gira'];
+
 	if(move_uploaded_file($file['tmp_name'][0], $dir)){	
-		$query = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario, monto, fecha_cheque, endoso, responsable, interes, dias, valor_interes, valor_girar, estado, adjunto) VALUES ('$fecha',$banco,'$cheque','$beneficiario',$monto,'$fecha_cheq','$endoso','$resp',$int,$dias,$val_int,$val_cheq,'por_consig', '$archivo')";
+		$query = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario, monto, fecha_cheque, endoso, responsable, interes, dias, valor_interes, valor_girar, estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario',$monto,'$fecha_cheq','$endoso','$resp',$int,$dias,$val_int,$val_cheq,'por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
 		$con->query($query) or trigger_error($con->error);
 ?>
 	<script>

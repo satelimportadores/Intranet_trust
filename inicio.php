@@ -1919,7 +1919,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/jquery_minimal.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js"></script>

@@ -3,9 +3,11 @@ $(document).ready(function() {
 	$('#por_consig').load('php/consulta_cheques.php?a=1');
 	$('#bancos').load('php/consulta_bancos.php');
 	$('#interes').load('php/consulta_interes.php');
+	$('#banco_gira').load('php/consulta_bancos_trust.php?bancos_trust');
+	
 	
 
-	setTimeout(Cselect, 2000);
+	setTimeout(Cselect, 1000);
 	
 	$('#fecha_cheq').on('change',function(){
 		var fecha = $('#fecha_cheq').val();
@@ -20,6 +22,34 @@ $(document).ready(function() {
 		});
 	});
 
+	//trae las cuentas del banco escogido #banco_gira
+		$('#banco_gira').on('change',function() {
+			banco = $('#banco_gira').val();
+				if (banco != '') {
+					//ajax traer cuentas
+						$.ajax({
+							url: 'php/consulta_bancos_trust.php',
+							type: 'POST',
+							data: {'cuentas_trust': 'cuentas_trust'},
+						})
+						.done(function(data) {
+							console.log("success"+data);
+							$('#cuenta_gira').empty();
+							var ArrayDatos = JSON.parse(data);
+								      for(var i in ArrayDatos){
+ 										$('#cuenta_gira').append( '<option value="'+ArrayDatos[i].id+'">'+ArrayDatos[i].cuenta_banco+' '+ArrayDatos[i].propietario+'</option>' );
+								      }
+							$('.cuenta').fadeIn(500);
+						})
+						.fail(function(data) {
+							console.log("error"+data);
+						});					
+					//ajax traer cuentas
+				}
+		});
+	//trae las cuentas del banco escogido #banco_gira
+
+	//$('.cuenta').hide();
 	$('#calcu').hide();
 	$('#cheques').hide();
 	$('#info').show();
@@ -88,7 +118,7 @@ $(document).ready(function() {
 });
 
 var Cselect = function(){
-	$(".chosen-select").chosen({});
+	$("select:not(#cuenta_gira)").chosen({});
 }
 
 var calculos = function(){
@@ -110,3 +140,4 @@ var calculos = function(){
 		$('#letras2').load('php/numeros_letras.php?monto='+valcheq);
 		$('#m2').text(valcheq);
 }
+

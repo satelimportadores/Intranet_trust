@@ -14,6 +14,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <title>Intranet - cheques</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <link rel="icon" type="image/ico" href="assets/images/favicon.ico" />
     <!-- Bootstrap -->
@@ -492,6 +493,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <select class="chosen-select chosen-transparent form-control" name="bancos" id="bancos" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
 
                           </select>
+                          <span id='bancos-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -629,6 +631,23 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         </div>
                       </div>
 
+                      <div class="form-group">
+                        <label for="banco_gira" class="col-sm-4 control-label">Banco giro</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="banco_gira" id="banco_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                                    <!-- se carga por php/consulta_bancos_trust.php -->
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group cuenta">
+                        <label for="cuenta_gira" class="col-sm-4 control-label">Cuenta giro</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="cuenta_gira" id="cuenta_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                                    <!-- se carga por php/consulta_bancos_trust.php -->
+                          </select>
+                        </div>
+                      </div>
 
                       <div class="form-group form-footer">
                         <div class="col-sm-offset-4 col-sm-8">

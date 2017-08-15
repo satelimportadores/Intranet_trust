@@ -24,8 +24,12 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <link rel="stylesheet" href="assets/js/vendor/videobackground/css/jquery.videobackground.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap-checkbox.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap/bootstrap-dropdown-multilevel.css">
+    <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen.min.css">
+    <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen-bootstrap.css">
 
     <link href="assets/css/minimal.css" rel="stylesheet">
+
+        <script src="js/jquery_minimal.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -446,7 +450,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
           <div class="pageheader">
             
 
-            <h2><i class="fa fa-file-o" style="line-height: 48px;padding-left: 2px;"></i> Blank Page <span>// Place subtitle here...</span></h2>
+            <h2><i class="fa fa-file-o" style="line-height: 48px;padding-left: 2px;"></i>Crear<span> cliente</span></h2>
             
 
             <div class="breadcrumbs">
@@ -475,26 +479,195 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
 <!-- CONTENIDO -->
-            <!-- row -->
-            <div class="row">
+<!-- row -->
+<div class="row">
 
-              <!-- col 12 -->
-              <div class="col-md-12">
-        
-
+<!-- /col 6 -->
+                <div class="col-md-12">
 
 
+
+                <!-- tile -->
+                <section class="tile color transparent-black">
+
+
+
+                  <!-- tile header -->
+                  <div class="tile-header">
+                    <h1><strong></strong></h1>
+                    <div class="controls">
+                      <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
+                      <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
+                      <a href="#" class="remove"><i class="fa fa-times"></i></a>
+                    </div>
+                  </div>
+                  <!-- /tile header -->
+
+                  <!-- tile body -->
+                  <div class="tile-body">
+                    
+                    <form class="form-horizontal" role="form" action="php/e_cliente_nuevo.php" method="post" enctype="multipart/form-data">
+                      
+                      <div class="form-group">
+                        <label for="cardname" class="col-sm-4 control-label">Razón social / nombre</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" name="cardname" placeholder="Trust Corporation SAS" id="cardname">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="cardcode" class="col-sm-4 control-label">Código cliente</label>
+                        <div class="col-sm-8">
+                          <input type="text" pattern="[cC]+[0-9]{5,10}" class="form-control" name="cardcode" placeholder="C860521792" id="cardcode">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="persona_contacto" class="col-sm-4 control-label">Persona de contacto</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" placeholder="Pepito Pérez" name="persona_contacto" id="persona_contacto">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="ciudad" class="col-sm-4 control-label">Ciudad</label>
+                        <div class="col-sm-8">
+                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="ciudad" name="ciudad">
+                              <!-- Se carga por php/consulta_ciudades.php -->
+                        </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="direccion" class="col-sm-4 control-label">Dirección</label>
+                        <div class="col-sm-8">
+                          <input type="text" placeholder="Calle 13 # 26 - 63" class="form-control" name="direccion" id="direccion">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="telefono" class="col-sm-4 control-label">Teléfono</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" placeholder="3600032" name="telefono" id="telefono">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="movil_new" class="col-sm-4 control-label">Celular</label>
+                        <div class="col-sm-8">
+                          <input type="number" class="form-control" placeholder="3115921575" name="movil_new" id="movil_new">
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="paginaweb" class="col-sm-4 control-label">Pagina WEB</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" placeholder="www.satelimportadores.com" name="paginaweb" id="paginaweb">
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="email_new" class="col-sm-4 control-label">Correo / email</label>
+                        <div class="col-sm-8">
+                          <input type="email" class="form-control" placeholder="servicioalcliente@satelimportadores" name="email_new" id="email_new">
+                          <span class="help-block"></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="sector" class="col-sm-4 control-label">Sector</label>
+                        <div class="col-sm-8">
+                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="sector" name="sector">
+                          <option value="">Seleccione</option>
+                            <option value="Comercio General">Comercio General</option>
+                            <option value="constructores">Constructores</option>
+                            <option value="Gaseras">Gaseras</option>
+                            <option value="Indistriales">Industriales</option>
+                        </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="forma_pago" class="col-sm-4 control-label">Tipo de pago</label>
+                        <div class="col-sm-8">
+                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="forma_pago" name="forma_pago">
+                          <optgroup label="Contado">
+                          <option value="">Seleccione</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Contra entrega">Contra entrega</option>
+                            <option value="Cheque al día">Cheque al día</option>
+                            <option value="Transferencia">Transferencia</option>
+                            <option value="Cheque al día confirmado">Cheque al día confirmado</option>
+                          </optgroup>
+                          <optgroup label="Crédito">
+                            <option value="15 días">15 días</option>
+                            <option value="30 días">30 días</option>
+                            <option value="45 días">45 días</option>
+                            <option value="60 días">60 días</option>
+                            <option value="30 días - Covifactura">30 días - Covifactura</option>
+                            <option value="Cheque 30 días">Cheque 30 días</option>
+                            <option value="Cheque 30 días confirmado">Cheque 30 días confirmado</option>
+                            <option value="Cheque 60 días confirmado">Cheque 60 días confirmado</option>
+                            <option value="Cheque posfechado 60 días">Cheque posfechado 60 días</option>
+                          </optgroup>
+                        </select>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group">
+                        <label for="colorpicker-rgb" class="col-sm-4 control-label">File Upload field</label>
+                        <div class="col-sm-8">
+                          <div class="input-group">
+                            <span class="input-group-btn">
+                              <span class="btn btn-primary btn-file">
+                                <i class="fa fa-upload"></i><input type="file" placeholder="selecciona tu archivo" name="file[]" multiple id="file">
+                                <input type="hidden" id="cant_files" name="cant_files" value="">
+                              </span>
+                            </span>
+                            <input type="text" class="form-control" readonly="">
+                          </div>
+                          <br>
+                                  <div class="descripcion_files">
+                      
+                                  </div>
+                        </div>
+                      </div>
+
+
+                      
+
+                      <div class="form-group form-footer">
+                        <div class="col-sm-offset-4 col-sm-8">
+                          <button type="submit" name="add_client" class="btn btn-primary">Guardar</button>
+                          <button type="reset" class="btn btn-default">Reset</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
+                  <!-- /tile body -->
+                  
+                
+
+
+                </section>
+                <!-- /tile -->
 
 
 
 
               </div>
-              <!-- /col 12 -->
+              <!-- /col 6 -->
 
 
-              
-            </div>
-            <!-- /row -->
+
+
+  
+</div>
+<!-- /row -->
       
 <!-- CONTENIDO -->
           
@@ -931,7 +1104,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery_minimal.js"></script>
+
+  <script src="js/cliente_nuevo.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js"></script>
@@ -942,17 +1116,11 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <script type="text/javascript" src="assets/js/vendor/animate-numbers/jquery.animateNumbers.js"></script>
     <script type="text/javascript" src="assets/js/vendor/videobackground/jquery.videobackground.js"></script>
     <script type="text/javascript" src="assets/js/vendor/blockui/jquery.blockUI.js"></script>
-
+    <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
+    <script src="assets/js/vendor/parsley/parsley.min.js"></script>
     <script src="js/menu.js"></script>
+    
 
-    <script>
-    $(function(){
-
-      
-      
-    })
-      
-    </script>
   </body>
 </html>
       
