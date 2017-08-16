@@ -49,7 +49,7 @@ $(document).ready(function() {
 		});
 	//trae las cuentas del banco escogido #banco_gira
 
-	//$('.cuenta').hide();
+	$('.cuenta').hide();
 	$('#calcu').hide();
 	$('#cheques').hide();
 	$('#info').show();

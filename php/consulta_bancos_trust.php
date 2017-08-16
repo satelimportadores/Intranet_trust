@@ -1,5 +1,6 @@
 <?php 
 include('class.conexion.php');
+header('Content-Type: text/html; charset=utf-8');
 
 	if (isset($_REQUEST['bancos_trust'])) {
 	$con = new conexion;
@@ -13,12 +14,14 @@ include('class.conexion.php');
 	}
 
 	if (isset($_REQUEST['cuentas_trust'])) {
+
+
 	$con = new conexion;
 	$query = 'SELECT id,nom_banco,cuenta_banco,propietario FROM intranet_bancos_trust WHERE activo = 1 ORDER BY nom_banco ASC';
 	$Rbancos = $con->query($query) or trigger_error($con->error);
 	$con->close();
 		while ($row = $Rbancos->fetch_array()) {
-			$arreglo[] = array_map('utf8_encode', $row);
+			$arreglo[] = $row;
 		}
 	echo json_encode($arreglo);
 	}	
