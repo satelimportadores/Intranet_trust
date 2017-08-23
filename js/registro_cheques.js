@@ -263,6 +263,10 @@ var revisar_calcu = function(){
 	if (codeerror == 1) {
 		view_cheques();
 		$('#bank2-help').html($('#cuenta_gira option:selected').text());
+		var endoso01 = $('#endoso01').text();
+			if (endoso01 == '') {
+				$('#endoso01').text($('#benef option:selected').text());
+			}
 	};
 	
 }
