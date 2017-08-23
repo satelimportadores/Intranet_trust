@@ -22,12 +22,11 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/vendor/animate/animate.css">
     <link type="text/css" rel="stylesheet" media="all" href="assets/js/vendor/mmenu/css/jquery.mmenu.all.css" />
-    <link rel="stylesheet" href="assets/js/vendor/videobackground/css/jquery.videobackground.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap-checkbox.css">
     <link rel="stylesheet" href="assets/css/vendor/bootstrap/bootstrap-dropdown-multilevel.css">
    <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen.min.css">
     <link rel="stylesheet" href="assets/js/vendor/chosen/css/chosen-bootstrap.css">
-
+    <link rel="stylesheet" href="assets/js/vendor/modals/css/component.css">
     <link href="assets/css/minimal.css" rel="stylesheet">
     <link href="assets/css/registro_cheques.css" rel="stylesheet">
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -488,7 +487,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                     
                       
                       <div class="form-group">
-                        <label for="bancos" class="col-sm-4 control-label">Banco Emisor</label>
+                        <label for="bancos" class="col-sm-4 control-label">Banco Emisor <i class="fa fa-bank"></i></label>
                         <div class="col-sm-8" id="selectbox">
                           <select class="chosen-select chosen-transparent form-control" name="bancos" id="bancos" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
 
@@ -499,23 +498,29 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
                       <div class="form-group">
-                        <label for="num_cheq" class="col-sm-4 control-label">Numero de Cheque</label>
+                        <label for="num_cheq" class="col-sm-4 control-label">Numero de Cheque #</label>
                         <div class="col-sm-8">
                           <input type="text" class="form-control" id="num_cheq" name="num_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <span id='num_cheq-help' class="help-block"></span>
+                        </div>
+                      </div>
+                      
+                      <div class="form-group">
+                        <label for="benef" class="col-sm-4 control-label">Beneficiario <i class="fa fa-user"></i></label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="benef" id="benef" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+
+                          </select>
+                          <span id='benef-help' class="help-block"></span>
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="benef" class="col-sm-4 control-label">Beneficiario</label>
-                        <div class="col-sm-8">
-                          <input type="text" class="form-control" id="benef" name="benef" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
-                        </div>
-                      </div>
 
                       <div class="form-group">
-                        <label for="monto" class="col-sm-4 control-label">Monto</label>
+                        <label for="monto" class="col-sm-4 control-label">Monto $</label>
                         <div class="col-sm-8">
                           <input type="number" class="form-control" id="monto" name="monto" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <span id='monto-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -523,6 +528,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         <label for="fecha_cheq" class="col-sm-4 control-label">Fecha Cheque</label>
                         <div class="col-sm-8">
                           <input type="date" class="form-control" name="fecha_cheq" id="fecha_cheq" parsley-trigger="change" parsley-minlength="4" parsley-type="dateIso" parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
+                          <span id='fecha_cheq-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -533,10 +539,24 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         </div>
                       </div>
 
-                      <div class="form-group">
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Endoso ?</label>
+                    <div class="col-sm-8 control-label">
+                      <div class="onoffswitch labeled blue">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch16">
+                        <label class="onoffswitch-label" for="myonoffswitch16">
+                          <span class="onoffswitch-inner"></span>
+                          <span class="onoffswitch-switch"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                      <div class="form-group endosohide">
                         <label for="endoso" class="col-sm-4 control-label">Endoso</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="endoso" readonly="" name="endoso" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" id="endoso"  name="endoso" parsley-trigger="change">
+                          <span id='endoso-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -628,6 +648,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                                 <option value="Marina Santamaria">Marina Santamaria</option>
                                 <option value="Mery Ibáñez">Mery Ibáñez</option>
                           </select>
+                          <span id='resp-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -637,6 +658,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <select class="chosen-select chosen-transparent form-control" name="banco_gira" id="banco_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
                                     <!-- se carga por php/consulta_bancos_trust.php -->
                           </select>
+                          <span id='banco_gira-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -646,6 +668,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <select class="chosen-select chosen-transparent form-control" name="cuenta_gira" id="cuenta_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
                                     <!-- se carga por php/consulta_bancos_trust.php -->
                           </select>
+                          <span id='cuenta_gira-help' class="help-block"></span>
                         </div>
                       </div>
 
@@ -680,7 +703,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                     <div class="col-md-2"></div>
                     <table   class="tabla col-md-7 col-xs-7">
                       <tr>
-                        <td width="200" rowspan="2"><b><h4><div id="bank">Bancamia</div></h4></b></td>
+                        <td width="200" rowspan="2"><b><h4><div id="bank"></div></h4></b></td>
                         <td><b>Fecha:</b></td>
                         <td><div id="fecha"></div></td>
                         <td><b># Cheque:</b></td>
@@ -693,7 +716,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       </tr>
                       <tr>
                         <td class="izq"><b>Páguese A</b></td>
-                        <td class="izq" colspan="4"><div class="border" id="persona"></div></td>
+                        <td class="izq" colspan="4"><div class="border" id="endoso01"></div></td>
                       </tr>
                       <tr>
                         <td class="izq"><b>Valor en letras</b></td>
@@ -714,7 +737,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                     <div class="col-md-2"></div>
                     <table   class="tabla2 col-md-7 col-xs-7">
                       <tr>
-                        <td width="200" rowspan="2"><b><h4><div id="bank2">Bancamia</div></h4></b></td>
+                        <td width="200" rowspan="2"><b><h4><div id="bank2"></div><span id='bank2-help' class="help-block"></span></h4></b></td>
                         <td><b>Fecha:</b></td>
                         <td><div id="fecha2"></div></td>
                         <td><b># Cheque:</b></td>
@@ -727,7 +750,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       </tr>
                       <tr>
                         <td class="izq"><b>Páguese A</b></td>
-                        <td class="izq" colspan="4"><div class="border2">Beneficiario...</div></td>
+                        <td class="izq" colspan="4"><div class="border2" id="beneficiario">Beneficiario...</div></td>
                       </tr>
                       <tr>
                         <td class="izq"><b>Valor en letras</b></td>
@@ -1248,13 +1271,15 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <script type="text/javascript" src="assets/js/vendor/sparkline/jquery.sparkline.min.js"></script>
     <script type="text/javascript" src="assets/js/vendor/nicescroll/jquery.nicescroll.min.js"></script>
     <script type="text/javascript" src="assets/js/vendor/animate-numbers/jquery.animateNumbers.js"></script>
-    <script type="text/javascript" src="assets/js/vendor/videobackground/jquery.videobackground.js"></script>
     <script type="text/javascript" src="assets/js/vendor/blockui/jquery.blockUI.js"></script>
 
     <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
     <script src="assets/js/vendor/parsley/parsley.min.js"></script>
 
     <script src="js/menu.js"></script>
+
+
+
     
 
   </body>

@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
+
+	$('.cuenta').hide();
+	$('.endosohide').hide();
 	$('#por_consig').load('php/consulta_cheques.php?a=1');
 	$('#bancos').load('php/consulta_bancos.php');
+	$('#benef').load('php/consulta_clientes_datos.php');
 	$('#interes').load('php/consulta_interes.php');
 	$('#banco_gira').load('php/consulta_bancos_trust.php?bancos_trust');
 	
@@ -22,6 +26,27 @@ $(document).ready(function() {
 		});
 	});
 
+
+	//abre endoso
+	var check = 1
+	$('#myonoffswitch16').on('click',function(){
+		if (check == 1) {
+				$('.endosohide').fadeIn();
+				check = 0;
+				$('#endoso').text('');
+				$("#endoso").prop('required',true);
+
+		}else{
+				$('.endosohide').fadeOut();
+				check = 1;
+				$('#endoso').text($('#benef option:selected').text());
+				$("#endoso").prop('required',false);
+		}
+
+	});
+
+	//abre endoso
+
 	//trae las cuentas del banco escogido #banco_gira
 		$('#banco_gira').on('change',function() {
 			banco = $('#banco_gira').val();
@@ -30,12 +55,14 @@ $(document).ready(function() {
 						$.ajax({
 							url: 'php/consulta_bancos_trust.php',
 							type: 'POST',
-							data: {'cuentas_trust': 'cuentas_trust'},
+							data: {'cuentas_trust': 'cuentas_trust','banco': banco},
 						})
 						.done(function(data) {
 							console.log("success"+data);
 							$('#cuenta_gira').empty();
 							var ArrayDatos = JSON.parse(data);
+										$('#cuenta_gira').append( '<option value="">Seleccione una cuenta</option>' );
+										$("#cuenta_gira").prop('required',true);
 								      for(var i in ArrayDatos){
  										$('#cuenta_gira').append( '<option value="'+ArrayDatos[i].id+'">'+ArrayDatos[i].cuenta_banco+' '+ArrayDatos[i].propietario+'</option>' );
 								      }
@@ -45,39 +72,34 @@ $(document).ready(function() {
 							console.log("error"+data);
 						});					
 					//ajax traer cuentas
+				}else{
+					$('.cuenta').hide();
+					$("#cuenta_gira").prop('required',false);
 				}
 		});
 	//trae las cuentas del banco escogido #banco_gira
 
-	$('.cuenta').hide();
-	$('#calcu').hide();
-	$('#cheques').hide();
-	$('#info').show();
+
+	//llamar a la vista #1
+		view_info();
+	//llamar a la vista #1
 
 	$('#btn-1').on('click',function() {
-		$('#info').hide();
-		$('#calcu').show();
-		$('#cheques').hide();
+		revisar_info();
 	});
 	$('#btn-4').on('click',function() {
-		$('#info').hide();
-		$('#calcu').show();
-		$('#cheques').hide();
+		view_calcu();
 	});
 	$('#btn-2').on('click',function() {
-		$('#info').show();
-		$('#calcu').hide();
-		$('#cheques').hide();
+		view_info();
 	});
 	$('#btn-3').on('click',function() {
-		$('#info').hide();
-		$('#calcu').hide();
-		$('#cheques').show();
+		revisar_calcu();
 	});
 
-	$('#bancos').on('change', function() {
+	$('#banco_gira').on('change', function() {
 		$('#bank').text($('#bancos option:selected').text());
-		$('#bank2').text($('#bancos option:selected').text());
+		$('#bank2').text($('#banco_gira option:selected').text());
 	});
 
 	$('#num_cheq').on('keyup', function() {
@@ -86,9 +108,12 @@ $(document).ready(function() {
 		$('#cheq').text(str);
 	});
 
-	$('#benef').on('keyup', function() {
-		$('#endoso').val($(this).val());
-		$('#persona').text($(this).val());
+	$('#benef').on('change', function() {
+		$('#beneficiario').text($('#benef option:selected').text());
+	});
+
+	$('#endoso').on('keyup', function() {
+		$('#endoso01').text($(this).val());
 	});
 
 	$('#monto,#interes,#btn-1').on('change click', function() {
@@ -141,3 +166,103 @@ var calculos = function(){
 		$('#m2').text(valcheq);
 }
 
+var view_info = function(){
+	$('#calcu').hide();
+	$('#cheques').hide();
+	$('#info').show();
+}
+var view_calcu = function(){
+		$('#info').hide();
+		$('#calcu').show();
+		$('#cheques').hide();
+}
+var view_cheques = function(){
+		$('#info').hide();
+		$('#calcu').hide();
+		$('#cheques').show();
+}
+
+var revisar_info = function(){
+	var codeerror = 0;
+	var error = '<span class="color-red">Este campo es obligatorio<span>';
+
+	dato = $('#bancos').val();
+	if (dato == '') {
+		$('#bancos-help').html(error).fadeIn(500).fadeOut(8000);
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	dato = $('#num_cheq').val();
+	if (dato == '') {
+		$('#num_cheq-help').html(error).fadeIn(500).fadeOut(8000);
+		$('#num_cheq-help').focus();
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	dato = $('#benef').val();
+	if (dato == '') {
+		$('#benef-help').html(error).fadeIn(500).fadeOut(8000);
+		$('#benef-help').focus();
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	dato = $('#monto').val();
+	if (dato == '') {
+		$('#monto-help').html(error).fadeIn(500).fadeOut(8000);
+		$('#monto-help').focus();
+		codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	dato = $('#fecha_cheq').val();
+	if (dato == '') {
+		$('#fecha_cheq-help').html(error).fadeIn(500).fadeOut(8000);
+		$('#fecha_cheq-help').focus();
+		codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	// dato = $('#endoso').val();
+	// if (dato == '') {
+	// 	$('#endoso-help').html(error).fadeIn(500).fadeOut(8000);
+	// 	$('#endoso-help').focus();
+	// 	codeerror = 0;
+	// }else{
+	// 	codeerror = 1;
+	// }
+//cambio de caratula
+	if (codeerror == 1) {
+		view_calcu();
+	};
+	
+}
+
+var revisar_calcu = function(){
+	var codeerror = 0;
+	var error = '<span class="color-red">Este campo es obligatorio<span>';
+
+	dato = $('#resp').val();
+	if (dato == '') {
+		$('#resp-help').html(error).fadeIn(500).fadeOut(8000);
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+	dato = $('#banco_gira').val();
+	if (dato == '') {
+		$('#banco_gira-help').html(error).fadeIn(500).fadeOut(8000);
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
+
+//cambio de caratula
+	if (codeerror == 1) {
+		view_cheques();
+		$('#bank2-help').html($('#cuenta_gira option:selected').text());
+	};
+	
+}

@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 	if (isset($_REQUEST['bancos_trust'])) {
 	$con = new conexion;
-	$query = 'SELECT DISTINCT(nom_banco) FROM intranet_bancos_trust WHERE activo = 1 ORDER BY nom_banco ASC';
+	$query = "SELECT DISTINCT(nom_banco) FROM intranet_bancos_trust WHERE activo = 1 ORDER BY nom_banco ASC";
 	$Rbancos = $con->query($query) or trigger_error($con->error);
 	$con->close();
 		echo "<option value=''>Seleccione un banco</option>";
@@ -13,11 +13,11 @@ header('Content-Type: text/html; charset=utf-8');
 		}
 	}
 
-	if (isset($_REQUEST['cuentas_trust'])) {
+	if (isset($_REQUEST['cuentas_trust']) && isset($_REQUEST['banco'])) {
 
-
+	$banco = $_REQUEST['banco']; 
 	$con = new conexion;
-	$query = 'SELECT id,nom_banco,cuenta_banco,propietario FROM intranet_bancos_trust WHERE activo = 1 ORDER BY nom_banco ASC';
+	$query = "SELECT id,nom_banco,cuenta_banco,propietario FROM intranet_bancos_trust WHERE activo = 1 AND nom_banco = \"$banco\" ORDER BY nom_banco ASC";
 	$Rbancos = $con->query($query) or trigger_error($con->error);
 	$con->close();
 		while ($row = $Rbancos->fetch_array()) {
