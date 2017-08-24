@@ -28,7 +28,7 @@ $fecha = date("Y-m-d H:i:s");
 					move_uploaded_file($temporal, $Destino); //Movemos el archivo temporal a la ruta especificada
 						//Guardar comentario en la base de datos
 							$con = new conexion;
-							$query = "INSERT INTO intranet_trust_clientes_comentarios(user_id, cardcode, comentarios, fecha,n_adjunto) VALUES ('$user_id', '$cardcode', '$comentarios', '$fecha', '$NombreOriginal')";
+							$query = "INSERT INTO intranet_trust_clientes_archivos(user_id, cardcode, comentarios, fecha,n_adjunto) VALUES ('$user_id', '$cardcode', '$comentarios', '$fecha', '$NombreOriginal')";
 							$con->query($query) or trigger_error($con->error);	
 						//Guardar comentario en la base de datos
 				}
@@ -55,7 +55,7 @@ if (isset($_REQUEST['sql02'])) {
 
 	//Guardar comentario en la base de datos
 		$con = new conexion;
-		$query = "INSERT INTO intranet_trust_clientes_comentarios(user_id, cardcode, comentarios, fecha) VALUES ('$user_id', '$cardcode', '$comentarios', '$fecha')";
+		$query = "INSERT INTO intranet_trust_clientes_archivos(user_id, cardcode, comentarios, fecha) VALUES ('$user_id', '$cardcode', '$comentarios', '$fecha')";
 		$con->query($query) or trigger_error($con->error);	
 	//Guardar comentario en la base de datos
 	

@@ -506,19 +506,19 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   <!-- tile body -->
                   <div class="tile-body">
                     
-                    <form class="form-horizontal" role="form" action="php/e_cliente_nuevo.php" method="post" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" novalidate data-parsley-validate="" action="php/e_cliente_nuevo.php" method="post" enctype="multipart/form-data">
                       
                       <div class="form-group">
                         <label for="cardname" class="col-sm-4 control-label">Razón social / nombre</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" name="cardname" placeholder="Trust Corporation SAS" id="cardname">
+                          <input type="text" class="form-control" name="cardname" placeholder="Trust Corporation SAS" required='required' id="cardname">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="cardcode" class="col-sm-4 control-label">Código cliente</label>
                         <div class="col-sm-8">
-                          <input type="text" pattern="[cC]+[0-9]{5,10}" class="form-control" name="cardcode" placeholder="C860521792" id="cardcode">
+                          <input type="text"  class="form-control" name="cardcode" required placeholder="860521792" id="cardcode">
                         </div>
                       </div>
 
@@ -532,7 +532,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="ciudad" class="col-sm-4 control-label">Ciudad</label>
                         <div class="col-sm-8">
-                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="ciudad" name="ciudad">
+                          <select class="chosen-select chosen-transparent form-control" tabindex="-1" id="ciudad" name="ciudad">
                               <!-- Se carga por php/consulta_ciudades.php -->
                         </select>
                         </div>
@@ -542,14 +542,14 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="direccion" class="col-sm-4 control-label">Dirección</label>
                         <div class="col-sm-8">
-                          <input type="text" placeholder="Calle 13 # 26 - 63" class="form-control" name="direccion" id="direccion">
+                          <input type="text" placeholder="Calle 13 # 26 - 63" class="form-control" required='required' name="direccion" id="direccion">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="telefono" class="col-sm-4 control-label">Teléfono</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" placeholder="3600032" name="telefono" id="telefono">
+                          <input type="number" class="form-control" required='required' placeholder="3600032" name="telefono" id="telefono">
                         </div>
                       </div>
 
@@ -570,48 +570,15 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="email_new" class="col-sm-4 control-label">Correo / email</label>
                         <div class="col-sm-8">
-                          <input type="email" class="form-control" placeholder="servicioalcliente@satelimportadores" name="email_new" id="email_new">
+                          <input type="email" class="form-control" data-parsley-trigger="change" placeholder="servicioalcliente@satelimportadores.com" name="email_new" id="email_new">
                           <span class="help-block"></span>
                         </div>
                       </div>
 
                       <div class="form-group">
-                        <label for="sector" class="col-sm-4 control-label">Sector</label>
+                        <label for="cupo" class="col-sm-4 control-label">Cupo</label>
                         <div class="col-sm-8">
-                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="sector" name="sector">
-                          <option value="">Seleccione</option>
-                            <option value="Comercio General">Comercio General</option>
-                            <option value="constructores">Constructores</option>
-                            <option value="Gaseras">Gaseras</option>
-                            <option value="Indistriales">Industriales</option>
-                        </select>
-                        </div>
-                      </div>
-
-                      <div class="form-group">
-                        <label for="forma_pago" class="col-sm-4 control-label">Tipo de pago</label>
-                        <div class="col-sm-8">
-                          <select class="chosen-select chosen-transparent form-control" required="" tabindex="-1" id="forma_pago" name="forma_pago">
-                          <optgroup label="Contado">
-                          <option value="">Seleccione</option>
-                            <option value="Efectivo">Efectivo</option>
-                            <option value="Contra entrega">Contra entrega</option>
-                            <option value="Cheque al día">Cheque al día</option>
-                            <option value="Transferencia">Transferencia</option>
-                            <option value="Cheque al día confirmado">Cheque al día confirmado</option>
-                          </optgroup>
-                          <optgroup label="Crédito">
-                            <option value="15 días">15 días</option>
-                            <option value="30 días">30 días</option>
-                            <option value="45 días">45 días</option>
-                            <option value="60 días">60 días</option>
-                            <option value="30 días - Covifactura">30 días - Covifactura</option>
-                            <option value="Cheque 30 días">Cheque 30 días</option>
-                            <option value="Cheque 30 días confirmado">Cheque 30 días confirmado</option>
-                            <option value="Cheque 60 días confirmado">Cheque 60 días confirmado</option>
-                            <option value="Cheque posfechado 60 días">Cheque posfechado 60 días</option>
-                          </optgroup>
-                        </select>
+                          <input type="number" class="form-control" placeholder="1000000" name="cupo" id="cupo">
                         </div>
                       </div>
 

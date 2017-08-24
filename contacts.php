@@ -21,7 +21,7 @@ if (isset($_REQUEST['letra'])) {
   
 
   $cliente = new Conexion;
-  $sql01 = "SELECT ITC.cardcode,ITC.cardname,ITC.direccion,ITC.telefono,ITC.paginaweb,ITC.sector,ITC.forma_pago,ITC.ciudad,ITC.email,(SELECT CONCAT(ITCC.nombre,' ',ITCC.apellido) FROM intranet_trust_clientes_contactos ITCC WHERE ITC.cardcode = ITCC.cardcode LIMIT 1) as  persona_contacto FROM intranet_trust_clientes ITC WHERE ITC.cardname LIKE 'A%' ORDER BY ITC.cardname ASC";
+  $sql01 = "SELECT ITC.cardcode,ITC.cardname,ITC.direccion,ITC.telefono,ITC.paginaweb,ITC.cupo,ITC.ciudad,ITC.email,(SELECT CONCAT(ITCC.nombre,' ',ITCC.apellido) FROM intranet_trust_clientes_contactos ITCC WHERE ITC.cardcode = ITCC.cardcode LIMIT 1) as  persona_contacto FROM intranet_trust_clientes ITC WHERE ITC.cardname LIKE '$letra%' ORDER BY ITC.cardname ASC";
   $clientes = $cliente->query($sql01) or trigger_error($cliente->error);
   
 
@@ -566,7 +566,7 @@ $cliente->close();
                         echo "<li class='avatar'>";
                       //contar los comentarios por comen
                         $comen = new Conexion;
-                        $sql01 = "SELECT COUNT(id) as cant FROM intranet_trust_clientes_comentarios WHERE cardcode = \"$r[cardcode]\"";
+                        $sql01 = "SELECT COUNT(id) as cant FROM intranet_trust_clientes_archivos WHERE cardcode = \"$r[cardcode]\"";
                         $Rcomen = $comen->query($sql01) or trigger_error($comen->error);
                         $s=$Rcomen->fetch_array();
                         $cantidad = $s['cant'];
@@ -593,7 +593,7 @@ $cliente->close();
                         }else{
                           echo "<h6>No existe persona de contacto</h6>";
                         }
-                      echo "$r[sector]";
+                      echo "$r[cupo]";
                       echo "<ul class='list-unstyled'>";
                       echo "<i class='fa fa-phone'> $r[telefono]</i>";
 

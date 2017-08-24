@@ -5,7 +5,7 @@ include('class.conexion.php');
 		$cardcode = $_REQUEST['cardcode'];
 			//consulta
 	$con = new conexion;
-	$query = "SELECT ITCC.user_id,CONCAT(TU.nombre,' ',TU.apellido) as nombre,ITCC.comentarios,ITCC.fecha,ITCC.n_adjunto FROM intranet_trust_clientes_comentarios ITCC INNER JOIN trust_users TU on TU.id = ITCC.user_id WHERE ITCC.cardcode = \"$cardcode\" ORDER BY fecha DESC";
+	$query = "SELECT ITCC.user_id,CONCAT(TU.nombre,' ',TU.apellido) as nombre,ITCC.comentarios,ITCC.fecha,ITCC.n_adjunto FROM intranet_trust_clientes_archivos ITCC INNER JOIN trust_users TU on TU.id = ITCC.user_id WHERE ITCC.cardcode = \"$cardcode\" ORDER BY fecha DESC";
 	$datos_client = $con->query($query) or trigger_error($con->error);
 	$Ncons_client = $datos_client->num_rows;
 	$con->close();
