@@ -15,7 +15,7 @@ date_default_timezone_set('America/Bogota');
 include('class.conexion.php');
 $con = new conexion;
 if (isset($_REQUEST['envio'])) {
-	$fecha =  date("Y-m-d");
+	$fecha =  date("Y-m-d H:i:s");
 	$banco = $_REQUEST['bancos'];
 	$cheque = $_REQUEST['num_cheq'];
 	$cheque = strtoupper($cheque);
@@ -25,9 +25,12 @@ if (isset($_REQUEST['envio'])) {
 	$fecha_cheq = $_REQUEST['fecha_cheq'];
 	$endoso = $_REQUEST['endoso'];
 	$endoso = strtoupper($endoso);
-	$int = $_REQUEST['interes'];
-	$dias = $_REQUEST['num_dias'];
-	$val_int = $_REQUEST['val_int'];
+	//tabla detalles
+		$int = $_REQUEST['interes'];
+		$dias = $_REQUEST['num_dias'];
+		$val_int = $_REQUEST['val_int'];
+	//tabla detalles
+
 	$val_cheq = $_REQUEST['val_cheq'];
 	$file = $_FILES['file'];
 	$resp = $_REQUEST['resp'];
@@ -41,8 +44,11 @@ if (isset($_REQUEST['envio'])) {
 	$cuenta_gira = $_REQUEST['cuenta_gira'];
 
 	if(move_uploaded_file($file['tmp_name'][0], $dir)){	
-		$query = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario, monto, fecha_cheque, endoso, responsable, interes, dias, valor_interes, valor_girar, estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario',$monto,'$fecha_cheq','$endoso','$resp',$int,$dias,$val_int,$val_cheq,'por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
-		$con->query($query) or trigger_error($con->error);
+		$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario, monto, fecha_cheque, endoso, responsable, valor_girar, estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario',$monto,'$fecha_cheq','$endoso','$resp',$val_cheq,'por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
+		$con->query($query01) or trigger_error($con->error);
+			$idinsertado = $con->insert_id;
+		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes) VALUES ('$idinsertado','$fecha','$int','$dias','$val_int')";
+		$con->query($query02) or trigger_error($con->error);
 ?>
 	<script>
 		alert("Datos enviados correctamente!");
