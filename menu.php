@@ -32,6 +32,11 @@
                           <i class="fa fa-caret-right"></i>cheques
                         </a>
                       </li>
+                      <li>
+                        <a href="cheques_detalles.php">
+                          <i class="fa fa-caret-right"></i>Historial de cheques
+                        </a>
+                      </li>
                     </ul>
                   </li>
 

@@ -1,6 +1,5 @@
 $(document).ready(function() {
 $("#error_capslock").hide();
-$( "#username" ).focus();
 $(function () {
    var isShiftPressed = false;
    var isCapsOn = null;
@@ -36,6 +35,6 @@ $(function () {
          }
          });
    });
-	
+	setTimeout("$('#username').focus();", 100);
 
 });

@@ -496,10 +496,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                   <!-- tile header -->
                   <div class="tile-header">
-                    <h1><strong>Advanced</strong> Table</h1>
-                    <div class="search">
-                      <input type="text" placeholder="Search...">
-                    </div>
+                    <h1><strong>Historial de cheques</h1>
                     <div class="controls">
                       <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
                       <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
@@ -508,38 +505,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   </div>
                   <!-- /tile header -->
 
-                  <!-- tile widget -->
-                  <div class="tile-widget bg-transparent-black-2">
-                    <div class="row">
-                      
-                      <div class="col-sm-4 col-xs-6">
-                        <div class="input-group table-options">
-                          <select class="chosen-select form-control">
-                            <option>Bulk Action</option>
-                            <option>Delete Selected</option>
-                            <option>Copy Selected</option>
-                            <option>Archive Selected</option>
-                          </select>
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Apply</button>
-                          </span>
-                        </div>
-                      </div>
 
-                      <div class="col-sm-8 col-xs-6 text-right">
-                        
-                         <div class="btn-group btn-group-xs table-options">
-                          <button type="button" class="btn btn-default">Day</button>
-                          <button type="button" class="btn btn-default">Week</button>
-                          <button type="button" class="btn btn-default">Month</button>
-                        </div>
-
-                      </div>
-
-
-                    </div>
-                  </div>
-                  <!-- /tile widget -->
 
 
 
@@ -555,10 +521,12 @@ $user_permisos = $_SESSION["nivel_permisos"];
                               <label for="allchck"></label>
                             </div>
                           </th>
-                          <th class="sortable sort-alpha sort-asc">First Name</th>
-                          <th class="sortable sort-alpha">Last Name</th>
-                          <th class="sortable sort-alpha">Username</th>
-                          <th style="width: 30px;"></th>
+                           <th class="sortable sort-alpha sort-asc">ID</th>
+                          <th class="sortable sort-alpha sort-asc">Fecha</th>
+                          <th class="sortable sort-alpha">Número de cheque</th>
+                          <th class="sortable sort-alpha">Nombre de banco</th>
+                          <th class="sortable sort-alpha">Beneficiario</th>
+                          <th class="sortable sort-alpha">Estado</th>
                         </tr>
                       </thead>
 
@@ -569,43 +537,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   <!-- /tile body -->
 
 
-                  <!-- tile footer -->
-                  <div class="tile-footer bg-transparent-black-2 rounded-bottom-corners">
-                    <div class="row">  
-                      
-                      <div class="col-sm-4">
-                        <div class="input-group table-options">
-                          <select class="chosen-select form-control">
-                            <option>Bulk Action</option>
-                            <option>Delete Selected</option>
-                            <option>Copy Selected</option>
-                            <option>Archive Selected</option>
-                          </select>
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Apply</button>
-                          </span>
-                        </div>
-                      </div>
-
-                      <div class="col-sm-4 text-center">
-                        <small class="inline table-options paging-info">showing 1-3 of 24 items</small>
-                      </div>
-
-                      <div class="col-sm-4 text-right sm-center">
-                        <ul class="pagination pagination-xs nomargin pagination-custom">
-                          <li class="disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                          <li class="active"><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
-                          <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                        </ul>
-                      </div>
-
-                    </div>
-                  </div>
-                  <!-- /tile footer -->
                   
                 
 
@@ -1057,13 +988,9 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <!-- Wrap all page content end -->
 
 
-
-    <section class="videocontent" id="video"></section>
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery_minimal.js"></script>
+    <script src="js/cheques_detalles.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js"></script>
@@ -1087,29 +1014,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
      <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
     <!-- tablas -->
 
-        <script>
-    $(function(){
-      //data table
-      var table = $('#TblCheques').DataTable({
-        "destroy":true,
-            "ajax":{
-                "method":"POST",
-                "url": "php/consulta_cheques_datatable.php"
-              },
-            "columns": [
-                { "": "" },
-                { "data": "banco_emisor" },
-                { "data": "numero_cheque" },
-                { "data": "beneficiario" },
-            ]
-       });
-      //data table
-
-
-      
-    })
-      
-    </script>
 
 
   </body>

@@ -38,7 +38,7 @@
             <form id="form-signin" class="form-signin" action="php/login.php" method="POST">
               <section>
                 <div class="input-group">
-                  <input type="text" class="form-control" name="username" placeholder="Usuario">
+                  <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
                   <div class="input-group-addon"><i class="fa fa-user"></i></div>
                 </div>
                 <div class="input-group">
@@ -66,6 +66,8 @@
       </div>
     </div>
     <!-- Wrap all page content end -->
+    <script src="js/jquery_minimal.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
       
