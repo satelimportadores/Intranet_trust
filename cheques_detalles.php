@@ -31,8 +31,9 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <link rel="stylesheet" href="assets/js/vendor/datatables/css/dataTables.bootstrap.css">
     <link rel="stylesheet" href="assets/js/vendor/datatables/css/ColVis.css">
     <link rel="stylesheet" href="assets/js/vendor/datatables/css/TableTools.css">
-    <!-- tablas -->
 
+    <!-- tablas -->
+    
     <link href="assets/css/minimal.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -558,6 +559,43 @@ $user_permisos = $_SESSION["nivel_permisos"];
               
             </div>
             <!-- /row -->
+
+            <!-- modal de edicion -->
+                  <div id="modal_editar" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"></button>
+                          <h4 class="modal-title">Editar estado de cheque</h4>
+                        </div>
+                        <div class="modal-body">
+                              <form action="cheques_detalles_submit" method="POST" accept-charset="utf-8">
+                                 
+                                    <input type="hidden" id="id_cheque" name="id_cheque" value="">
+                                       
+                                  <div class="form-group">
+                                    <label for="num_cheque" class="col-sm-4 control-label">Número de cheque</label>
+                                    <div class="col-sm-8">
+                                      <input type="text" class="form-control" name="num_cheque" required='required' id="num_cheque">
+                                    </div>
+                                  </div>
+
+                                 
+
+                              </form>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default">Guardar</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                
+                                  </div>
+                      </div>
+
+                    </div>
+                  </div>
+            <!-- modal de edicion -->
+
       
 <!-- CONTENIDO -->
           
@@ -1013,7 +1051,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <script src="assets/js/vendor/datatables/dataTables.bootstrap.js"></script>
      <script src="assets/js/vendor/chosen/chosen.jquery.min.js"></script>
     <!-- tablas -->
-
 
 
   </body>
