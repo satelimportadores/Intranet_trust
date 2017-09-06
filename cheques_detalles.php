@@ -513,7 +513,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   <!-- tile body -->
                   <div class="tile-body nopadding">
                     
-                    <table class="table table-bordered" id="TblCheques">
+                    <table class="table table-bordered table-striped" id="TblCheques">
                       <thead>
                         <tr>
                           <th>
@@ -527,6 +527,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <th class="sortable sort-alpha">Número de cheque</th>
                           <th class="sortable sort-alpha">Nombre de banco</th>
                           <th class="sortable sort-alpha">Beneficiario</th>
+                          <th class="sortable sort-alpha">Monto</th>
+                          <th class="sortable sort-alpha">Fecha consignación</th>
                           <th class="sortable sort-alpha">Estado</th>
                         </tr>
                       </thead>
@@ -566,34 +568,76 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                       <!-- Modal content-->
                       <div class="modal-content">
+                        <form action="cheques_detalles_submit" method="POST" accept-charset="utf-8">
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"></button>
                           <h4 class="modal-title">Editar estado de cheque</h4>
                         </div>
                         <div class="modal-body">
-                              <form action="cheques_detalles_submit" method="POST" accept-charset="utf-8">
-                                 
-                                    <input type="hidden" id="id_cheque" name="id_cheque" value="">
-                                       
-                                  <div class="form-group">
-                                    <label for="num_cheque" class="col-sm-4 control-label">Número de cheque</label>
-                                    <div class="col-sm-8">
-                                      <input type="text" class="form-control" name="num_cheque" required='required' id="num_cheque">
-                                    </div>
-                                  </div>
+                              
+                              <!--Formulario-->
+                                                <!-- tile body -->
+                  <div class="tile-body">
+                    
+                    <form class="form-horizontal" role="form" parsley-validate id="basicvalidations">
 
-                                 
-
-                              </form>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-default">Guardar</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                
-                                  </div>
+                      <input type="hidden" id="id_cheque" name="id_cheque" value="">
+                      
+                      <div class="form-group">
+                        <label for="num_cheque" class=" control-label">Número de cheque</label>
+                        <div class="">
+                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
                       </div>
 
+                     
+
+                      <div class="form-group">
+                        <label for="categorias" class=" control-label">Estado de cheque</label>
+                        <div class="" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" id="categorias" name="categorias" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                              <!--por php/consulta_cheques_estados?categorias-->
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="subcategorias" class=" control-label">Sub categoría</label>
+                        <div class="" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" id="subcategorias" name="subcategorias" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                              <!--por php/consulta_cheques_estados?subcategorias-->
+                          </select>
+                        </div>
+                      </div>
+
+
+
+
+                 </div>
+                  <!-- /tile body -->
+
+                              <!--Formulario-->
+                                 
+
+
+      
+
+                              <br>
+                                  
+                                    <div class="form-group form-footer">
+                                      <div class="col-sm-offset-4 col-sm-8">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                        <button type="reset" class="btn btn-default">Borrar</button>
+                                      </div>
+                                    </div>
+                                <div class="modal-footer">
+                                </div>
+                          </form> 
+                      </div>
+                      
                     </div>
                   </div>
+                 </div> 
             <!-- modal de edicion -->
 
       
@@ -931,7 +975,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                 <li>
                   <div class="form-group">
-                    <label class="col-xs-8 control-label">Show Fullname</label>
+                    <label class="col-xs-8 control-label">Show num_cheque</label>
                     <div class="col-xs-4 control-label">
                       <div class="onoffswitch greensea">
                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="show-fullname">
