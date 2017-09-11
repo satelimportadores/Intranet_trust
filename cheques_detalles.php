@@ -611,16 +611,11 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       </div>
 
 
-
-
                  </div>
                   <!-- /tile body -->
 
-                              <!--Formulario-->
-                                 
-
-
-      
+                              
+ 
 
                               <br>
                                   
@@ -633,6 +628,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                                 <div class="modal-footer">
                                 </div>
                           </form> 
+                          <!--Formulario-->
                       </div>
                       
                     </div>
@@ -647,10 +643,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
           </div>
           <!-- /content container -->
-
-
-
-
 
 
         </div>

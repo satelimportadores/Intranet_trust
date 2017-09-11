@@ -6,7 +6,7 @@
       if (isset($_REQUEST['categorias'])) {
            //traer categorias   
               $categorias = new Conexion;
-              $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1";
+              $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1 order by categoria ASC";
               $Rcategorias = $categorias->query($sql01) or trigger_error($categorias->error);
           //traer categorias
           if (!$Rcategorias) {
@@ -27,7 +27,7 @@
             $subcategoria = $_REQUEST['subcategoria'];
            //traer categorias   
               $subcategorias = new Conexion;
-              $sql01 = "SELECT id_categoria,subcategoria FROM intranet_cheques_estado WHERE cod_categoria = \"$subcategoria\" AND activo = 1";
+              $sql01 = "SELECT id_categoria,subcategoria FROM intranet_cheques_estado WHERE cod_categoria = \"$subcategoria\" AND activo = 1 order by subcategoria ASC";
               $Rsubcategorias = $subcategorias->query($sql01) or trigger_error($subcategorias->error);
           //traer subcategorias
           if (!$Rsubcategorias) {

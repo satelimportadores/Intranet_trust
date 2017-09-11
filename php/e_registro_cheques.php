@@ -44,10 +44,10 @@ if (isset($_REQUEST['envio'])) {
 	$cuenta_gira = $_REQUEST['cuenta_gira'];
 
 	if(move_uploaded_file($file['tmp_name'][0], $dir)){	
-		$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario, monto, fecha_cheque, endoso, responsable, valor_girar, estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario',$monto,'$fecha_cheq','$endoso','$resp',$val_cheq,'por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
+		$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
 		$con->query($query01) or trigger_error($con->error);
 			$idinsertado = $con->insert_id;
-		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes) VALUES ('$idinsertado','$fecha','$int','$dias','$val_int')";
+		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar) VALUES ('$idinsertado','$fecha','$int','$dias','$val_int', '$monto', '$val_cheq')";
 		$con->query($query02) or trigger_error($con->error);
 ?>
 	<script>
