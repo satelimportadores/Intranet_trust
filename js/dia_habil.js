@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	 
-var fecha = new Date('2017/12/08');
+var fecha = new Date('2017/09/30');
 		document.write(fecha+'<br>');
 		dia = fecha.getDay();
 		dia_habiles(dia,fecha);

@@ -1,3 +1,5 @@
+var fecha01;
+var fecha;
 $(document).ready(function() {
 
 
@@ -14,16 +16,12 @@ $(document).ready(function() {
 	setTimeout(Cselect, 1000);
 	
 	$('#fecha_cheq').on('change',function(){
-		var fecha = $('#fecha_cheq').val();
-		$('#fecha').text(fecha);
-		$.post('php/consulta_fechas.php', {fecha: fecha}, function(data) {
-		$('#fecha_con').val(data);
-		var con = $('#fecha_con').val();
-		$('#fecha2').text(con);
-			$.post('php/consulta_fechas_dif.php', {fech: con}, function(data) {
-			$('#num_dias').val(data);
-			});
-		});
+		var fecha01 = $('#fecha_cheq').val();
+			$('#fecha').text(fecha01);
+		var fecha = moment(fecha01);
+		dia = fecha.day();
+		dia_habiles(dia,fecha);
+
 	});
 
 
@@ -100,6 +98,10 @@ $(document).ready(function() {
 	$('#banco_gira').on('change', function() {
 		$('#bank').text($('#bancos option:selected').text());
 		$('#bank2').text($('#banco_gira option:selected').text());
+	});
+
+	$('#bancos').on('change', function() {
+		$('#bank').text($('#bancos option:selected').text());
 	});
 
 	$('#num_cheq').on('keyup', function() {
@@ -270,3 +272,67 @@ var revisar_calcu = function(){
 	};
 	
 }
+
+//Calculo de dias habiles
+var dia_habiles = function(dia,fecha){
+	switch(dia) {
+	    case 6:
+	        	fecha.add(2, 'day');
+	        break;
+	    case 0:
+	       		fecha.add(1, 'day');
+	        break;
+	}
+	festivos(fecha);
+	$('#fecha_con').val(fecha.format("YYYY-MM-DD"));
+	cal_dias(fecha);
+}
+
+var festivos = function(fecha){
+	mes = fecha.month() + 1;
+	dia01 = fecha.date();
+//array festivos
+	var datos = [];
+		datos[1] = [1,6]; // Primero de Enero,Reyes Magos Enero 6
+		datos[3] = [20]; // San Jose Marzo 19
+		datos[4] = [13,14]; //semana santa
+		datos[5] = [1,29]; // Dia01 del Trabajo 1 de Mayo,dia01 de la ascensión
+		datos[6] = [19,26]; // Corpus chisti,Sagrado corazon
+		datos[7] = [3,20]; // San Pedro y San Pablo Junio 29,Independencia 20 de Julio
+		datos[8] = [7,21]; // Batalla de Boyacá 7 de Agosto,Asunción Agosto 21
+		datos[10] = [16]; // Dia01 de la raza
+		datos[11] = [6,13]; // Todos los santos Nov 1,Independencia de cartagena
+		datos[12] = [8,25]; // Maria Inmaculada 8 diciembre (religiosa),Navidad 25 de diciembre
+//array festivos
+	for (var i = 1 ; i < 13; i++) {
+		
+			if (typeof datos[i] !== 'undefined') {
+				if (mes == i) {
+					if (dia01 == datos[i][0]) {
+							fecha.add(1, 'day');
+						dia = fecha.day();
+						dia_habiles(dia,fecha);
+						$('#fecha_con').val(fecha.format("YYYY-MM-DD"));
+						cal_dias(fecha);
+					}
+					if (dia01 == datos[i][1]) {
+							fecha.add(1, 'day');
+						dia = fecha.day();
+						dia_habiles(dia,fecha);
+						$('#fecha_con').val(fecha.format("YYYY-MM-DD"));
+						cal_dias(fecha);
+					}
+				}
+			}
+	};
+
+}
+
+var cal_dias = function(fecha){
+	var hoy = moment();
+	var diferencia = fecha.diff(hoy,"days");
+	$('#num_dias').val(diferencia + 2);
+
+}
+//Calculo de dias habiles
+

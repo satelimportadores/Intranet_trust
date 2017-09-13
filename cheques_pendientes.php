@@ -527,7 +527,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <th class="sortable sort-alpha">Número de cheque</th>
                           <th class="sortable sort-alpha">Nombre de banco</th>
                           <th class="sortable sort-alpha">Beneficiario</th>
-                          <th class="sortable sort-alpha">Monto</th>
                           <th class="sortable sort-alpha">Fecha consignación</th>
                           <th class="sortable sort-alpha">Estado</th>
                         </tr>
@@ -601,14 +600,10 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="subcategorias" class=" control-label">Sub categoría</label>
-                        <div class="" id="selectbox">
-                          <select class="chosen-select chosen-transparent form-control" id="subcategorias" name="subcategorias" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
-                              <!--por php/consulta_cheques_estados?subcategorias-->
-                          </select>
-                        </div>
+                      <div id="formulario_dinamico">
+                        
                       </div>
+
 
 
                  </div>
@@ -1064,7 +1059,10 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery_minimal.js"></script>
-    <script src="js/cheques_detalles.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/cheques_pendientes.js"></script>
+
+    <!-- <script src="js/dia_habil.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="assets/js/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="assets/js/vendor/bootstrap/bootstrap-dropdown-multilevel.js"></script>

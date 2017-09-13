@@ -32,6 +32,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.js"></script>
     <script>$( "#menu" ).load( "menu.php" );</script>
+    <script src="js/moment.js"></script>
     <script src="js/registro_cheques.js"></script>
     <script src="js/registro_cheques_tabla.js"></script>
 
@@ -527,7 +528,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="fecha_cheq" class="col-sm-4 control-label">Fecha Cheque</label>
                         <div class="col-sm-8">
-                          <input type="date" class="form-control" name="fecha_cheq" id="fecha_cheq" parsley-trigger="change" parsley-minlength="4" parsley-type="dateIso" parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
+                          <input type="date" class="form-control" name="fecha_cheq" id="fecha_cheq" >
                           <span id='fecha_cheq-help' class="help-block"></span>
                         </div>
                       </div>
@@ -535,7 +536,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="fecha_con" class="col-sm-4 control-label">Fecha Consignación</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" readonly="" name="fecha_con" id="fecha_con" parsley-trigger="change" parsley-minlength="4" parsley-type="dateIso" parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
+                          <input type="text" class="form-control" readonly="" name="fecha_con" id="fecha_con" parsley-trigger="change" parsley-minlength="4"  parsley-validation-minlength="1" placeholder="YYYY-MM-DD">
                         </div>
                       </div>
 
@@ -613,7 +614,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="num_dias" class="col-sm-4 control-label">Numero de Días</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="num_dias" name="num_dias" parsley-trigger="change" parsley-required="true" parsley-minlength="2" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" id="num_dias" name="num_dias" readonly="readonly" parsley-trigger="change" parsley-required="true" parsley-minlength="2" parsley-validation-minlength="1">
                         </div>
                       </div>
 

@@ -23,6 +23,7 @@ if (isset($_REQUEST['envio'])) {
 	$beneficiario = strtoupper($beneficiario);
 	$monto = $_REQUEST['monto'];
 	$fecha_cheq = $_REQUEST['fecha_cheq'];
+	$fecha_con = $_REQUEST['fecha_con'];
 	$endoso = $_REQUEST['endoso'];
 	$endoso = strtoupper($endoso);
 	//tabla detalles
@@ -47,7 +48,7 @@ if (isset($_REQUEST['envio'])) {
 		$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
 		$con->query($query01) or trigger_error($con->error);
 			$idinsertado = $con->insert_id;
-		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar) VALUES ('$idinsertado','$fecha','$int','$dias','$val_int', '$monto', '$val_cheq')";
+		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar) VALUES ('$idinsertado','$fecha_con','$int','$dias','$val_int', '$monto', '$val_cheq')";
 		$con->query($query02) or trigger_error($con->error);
 ?>
 	<script>

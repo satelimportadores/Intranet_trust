@@ -6,7 +6,7 @@
       if (isset($_REQUEST['categorias'])) {
            //traer categorias   
               $categorias = new Conexion;
-              $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1 order by categoria ASC";
+              $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1 AND paso = 1 order by categoria ASC";
               $Rcategorias = $categorias->query($sql01) or trigger_error($categorias->error);
           //traer categorias
           if (!$Rcategorias) {
@@ -42,5 +42,43 @@
       }
 //Subcategorias
 
+//taza de interes de un cheque
+      if (isset($_REQUEST['interes'])) {
 
+            $id_cheque = $_REQUEST['id_cheque'];
+           //traer categorias   
+              $interes = new Conexion;
+              $sql01 = "SELECT interes FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $Rinteres = $interes->query($sql01) or trigger_error($interes->error);
+          //traer interes
+          if (!$Rinteres) {
+                Die ('Error');
+          }else{
+                while ($data = $Rinteres->fetch_array()) {
+                  echo $data['interes'];
+                }
+          } 
+            $interes->close();
+      }
+//taza de interes de un cheque
+
+//monto de un cheque
+      if (isset($_REQUEST['monto'])) {
+
+            $id_cheque = $_REQUEST['id_cheque'];
+           //traer categorias   
+              $monto = new Conexion;
+              $sql01 = "SELECT monto FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $Rmonto = $monto->query($sql01) or trigger_error($monto->error);
+          //traer monto
+          if (!$Rmonto) {
+                Die ('Error');
+          }else{
+                while ($data = $Rmonto->fetch_array()) {
+                  echo $data['monto'];
+                }
+          } 
+            $monto->close();
+      }
+//monto de un cheque      
 ?>
