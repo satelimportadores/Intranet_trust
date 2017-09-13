@@ -489,7 +489,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
               <!-- col 12 -->
               <div class="col-md-12">
-        ----------------------------------------------------------------------------------------------
+
                 <!-- tile -->
                 <section class="tile color transparent-black">
 
@@ -545,13 +545,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                 </section>
                 <!-- /tile -->
------------------------------------------------------------------------------------------------
 
-
-
-
-
-
+<!-- CONTENIDO -->
 
               </div>
               <!-- /col 12 -->
@@ -562,7 +557,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
             <!-- /row -->
 
             <!-- modal de edicion -->
-                  <div id="modal_editar" class="modal fade" role="dialog">
+                  <div id="modal_editar" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
                     <div class="modal-dialog">
 
                       <!-- Modal content-->
@@ -616,8 +611,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
                                   
                                     <div class="form-group form-footer">
                                       <div class="col-sm-offset-4 col-sm-8">
-                                        <button type="submit" class="btn btn-primary">Guardar</button>
-                                        <button type="reset" class="btn btn-default">Borrar</button>
+                                        <button type="submit" class="btn btn-green">Guardar</button>
+                                        <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
                                       </div>
                                     </div>
                                 <div class="modal-footer">

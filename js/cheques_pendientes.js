@@ -71,6 +71,15 @@ $('#formulario_dinamico').on("change","#fecha_cheq",function(){
 })
 //consultad de festivos en la fecha
 
+//Boton descartar
+$('#descartar').click(function() {
+  $('#modal_editar').modal('hide');
+  $('#form_cheques')[0].reset();
+  $('#formulario_dinamico').html('');
+
+});
+//Boton descartar
+
 });
 
 //FUNCIONES
