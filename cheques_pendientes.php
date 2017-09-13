@@ -567,7 +567,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                       <!-- Modal content-->
                       <div class="modal-content">
-                        <form action="cheques_detalles_submit" method="POST" accept-charset="utf-8">
+                       
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal"></button>
                           <h4 class="modal-title">Editar estado de cheque</h4>
@@ -578,7 +578,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                                                 <!-- tile body -->
                   <div class="tile-body">
                     
-                    <form class="form-horizontal" role="form" parsley-validate id="basicvalidations">
+                     <form  action="php/e_registro_cheques_aplazar.php" id="form_cheques" method="POST" accept-charset="utf-8">
 
                       <input type="hidden" id="id_cheque" name="id_cheque" value="">
                       
@@ -592,10 +592,10 @@ $user_permisos = $_SESSION["nivel_permisos"];
                      
 
                       <div class="form-group">
-                        <label for="categorias" class=" control-label">Estado de cheque</label>
+                        <label for="estado_cheque" class=" control-label">Estado de cheque</label>
                         <div class="" id="selectbox">
-                          <select class="chosen-select chosen-transparent form-control" id="categorias" name="categorias" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
-                              <!--por php/consulta_cheques_estados?categorias-->
+                          <select class="chosen-select chosen-transparent form-control" id="estado_cheque" name="estado_cheque" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                              <!--por php/consulta_cheques_estados?paso01-->
                           </select>
                         </div>
                       </div>

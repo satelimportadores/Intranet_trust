@@ -3,7 +3,7 @@
     include_once('class.conexion.php');
 
 //Categorias
-      if (isset($_REQUEST['categorias'])) {
+      if (isset($_REQUEST['paso01'])) {
            //traer categorias   
               $categorias = new Conexion;
               $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1 AND paso = 1 order by categoria ASC";
@@ -81,4 +81,24 @@
             $monto->close();
       }
 //monto de un cheque      
+
+//valor_girar de un cheque
+      if (isset($_REQUEST['valor_girar'])) {
+
+            $id_cheque = $_REQUEST['id_cheque'];
+           //traer categorias   
+              $valor_girar = new Conexion;
+              $sql01 = "SELECT valor_girar FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $Rvalor_girar = $valor_girar->query($sql01) or trigger_error($valor_girar->error);
+          //traer valor_girar
+          if (!$Rvalor_girar) {
+                Die ('Error');
+          }else{
+                while ($data = $Rvalor_girar->fetch_array()) {
+                  echo $data['valor_girar'];
+                }
+          } 
+            $valor_girar->close();
+      }
+//valor_girar de un cheque      valor_girar
 ?>

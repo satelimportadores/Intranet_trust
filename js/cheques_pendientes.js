@@ -32,15 +32,18 @@ $(document).ready(function() {
 	});
 
 //traer formulario dinamico
- $('#categorias').change(function() {
+ $('#estado_cheque').change(function() {
 
-    categoria = $('#categorias').val();
-    //alert(categoria);
+    categoria = $('#estado_cheque').val();
+    
        if (categoria == '2') {
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
           $("#formulario_dinamico").trigger('create');
+          $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar.php');
+
        }else{
           $('#formulario_dinamico').html('');
+          $('#form_cheques').prop('action', 'php/e_registro_cheques_consignado.php');
        }
  });
 //traer formulario dinamico
@@ -57,8 +60,12 @@ $('#formulario_dinamico').on("change","#fecha_cheq",function(){
       $('#formulario_dinamico #interes').val(interes);
     });
     $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'monto':'monto'},function(data){
-      console.log("monto: "+data);
+      //console.log("monto: "+data);
       $('#formulario_dinamico #monto').val(data);
+    });
+    $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'valor_girar':'valor_girar'},function(data){
+      //console.log("monto: "+data);
+      $('#formulario_dinamico #valor_girar').val(data);
     });
     setTimeout("calculos()", 400);
 })
@@ -76,13 +83,13 @@ modal_editar = function (cheque_id, numero_cheque){
         $.ajax({
           url: 'php/consulta_cheques_estados.php',
           type: 'POST',
-          data: {'categorias': 'categorias'},
+          data: {'paso01': 'paso01'},
         })
         .done(function(data) {
           //console.log("success"+data);
-          $("#categorias" ).empty();
-          $("#categorias" ).append( data );
-          $("#categorias").chosen({});
+          $("#estado_cheque" ).empty();
+          $("#estado_cheque" ).append( data );
+          $("#estado_cheque").chosen({});
         })
         .fail(function() {
           console.log("error");
