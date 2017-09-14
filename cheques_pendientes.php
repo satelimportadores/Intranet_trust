@@ -610,11 +610,14 @@ $user_permisos = $_SESSION["nivel_permisos"];
                               <br>
                                   
                                     <div class="form-group form-footer">
-                                      <div class="col-sm-offset-4 col-sm-8">
-                                        <button type="submit" class="btn btn-green">Guardar</button>
-                                        <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
+                                       <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-8">
+                                          <button type="submit" class="btn btn-green">Guardar</button>
+                                          <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
+                                        </div>
                                       </div>
                                     </div>
+
                                 <div class="modal-footer">
                                 </div>
                           </form> 
@@ -1055,7 +1058,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery_minimal.js"></script>
     <script src="js/moment.js"></script>
-    <script src="js/cheques_pendientes.js"></script>
+    <script src="js/cheques_pendientes.js"></script>  
+    <script src="js/jquery.priceformat.min.js"></script>
 
     <!-- <script src="js/dia_habil.js"></script>-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->

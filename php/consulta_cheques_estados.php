@@ -101,4 +101,24 @@
             $valor_girar->close();
       }
 //valor_girar de un cheque      valor_girar
+
+//fecha_cheque de un cheque
+      if (isset($_REQUEST['fecha_cheque'])) {
+
+            $id_cheque = $_REQUEST['id_cheque'];
+           //traer categorias   
+              $fecha_cheque = new Conexion;
+              $sql01 = "SELECT fecha_cheque FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $Rfecha_cheque = $fecha_cheque->query($sql01) or trigger_error($fecha_cheque->error);
+          //traer fecha_cheque
+          if (!$Rfecha_cheque) {
+                Die ('Error');
+          }else{
+                while ($data = $Rfecha_cheque->fetch_array()) {
+                  echo $data['fecha_cheque'];
+                }
+          } 
+            $fecha_cheque->close();
+      }
+//fecha_cheque de un cheque
 ?>

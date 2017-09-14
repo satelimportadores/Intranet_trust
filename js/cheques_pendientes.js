@@ -1,4 +1,7 @@
+var fechaA;
 $(document).ready(function() {
+
+
 	
      //data table
       var table = $('#TblCheques').DataTable({
@@ -37,8 +40,18 @@ $(document).ready(function() {
     categoria = $('#estado_cheque').val();
     
        if (categoria == '2') {
+
+         id_cheque = $('#id_cheque').val();
+
+            $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'fecha_cheque':'fecha_cheque'},function(data){
+              fechaA = data;
+              $('#formulario_dinamico #fecha_cheq').val(data);
+              $('#formulario_dinamico #fecha_cheq').attr('min', data);
+            });
+
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
           $("#formulario_dinamico").trigger('create');
+
           $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar.php');
 
        }else{
@@ -60,11 +73,9 @@ $('#formulario_dinamico').on("change","#fecha_cheq",function(){
       $('#formulario_dinamico #interes').val(interes);
     });
     $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'monto':'monto'},function(data){
-      //console.log("monto: "+data);
       $('#formulario_dinamico #monto').val(data);
     });
     $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'valor_girar':'valor_girar'},function(data){
-      //console.log("monto: "+data);
       $('#formulario_dinamico #valor_girar').val(data);
     });
     setTimeout("calculos()", 400);
@@ -110,7 +121,6 @@ modal_editar = function (cheque_id, numero_cheque){
 
 var calculos = function(){
     interes = $('#formulario_dinamico #interes').val();
-     console.log("interes_calculos: "+interes);
     var val = parseInt($('#formulario_dinamico #monto').val());
     var dia = parseInt($('#formulario_dinamico #num_dias').val());
     var cuot = +(val*interes)/30;
@@ -121,6 +131,10 @@ var calculos = function(){
     valcheq = valcheq.toFixed();
     $('#formulario_dinamico #cuota_dia').val(cuot);
     $('#formulario_dinamico #val_int').val(valint);
+    $('#formulario_dinamico #monto').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
+    $('#formulario_dinamico #valor_girar').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
+    $('#formulario_dinamico #cuota_dia').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
+    $('#formulario_dinamico #val_int').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
 }
 //Calculo de dias habiles
 var dia_habiles = function(dia,fecha){
@@ -178,9 +192,10 @@ var festivos = function(fecha){
 }
 
 var cal_dias = function(fecha){
-  var hoy = moment();
-  var diferencia = fecha.diff(hoy,"days");
+  var fechaA = moment();
+  var diferencia = fecha.diff(fechaA,"days");
   $('#formulario_dinamico #num_dias').val(diferencia + 2);
+
 
 }
 //Calculo de dias habiles

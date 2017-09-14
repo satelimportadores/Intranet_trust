@@ -9,10 +9,13 @@ if (isset($_REQUEST['id_cheque'])) {
 	$forma_pago_interes = $_REQUEST['forma_pago_interes'];
 	$interes = $_REQUEST['interes'];
 	$monto = $_REQUEST['monto'];
+	$monto  =preg_replace("/[^0-9]/", "", $monto);
 	$num_cheque = $_REQUEST['num_cheque'];
 	$num_dias = $_REQUEST['num_dias'];
 	$val_int = $_REQUEST['val_int'];
+	$val_int  =preg_replace("/[^0-9]/", "", $val_int);
 	$valor_girar = $_REQUEST['valor_girar'];
+	$valor_girar  =preg_replace("/[^0-9]/", "", $valor_girar);
 
 
 
