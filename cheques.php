@@ -623,21 +623,21 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="cuota_dia" class="col-sm-4 control-label">Cuota Diaria</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="cuota_dia" name="cuota_dia" parsley-trigger="change" parsley-required="true" parsley-validation-minlength="1">
+                          <input type="number" class="form-control" readonly="readonly" id="cuota_dia" name="cuota_dia" parsley-trigger="change" parsley-required="true" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="val_int" class="col-sm-4 control-label">Valor Interés</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="val_int" name="val_int" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="number" class="form-control" readonly="readonly" id="val_int" name="val_int" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <label for="val_cheq" class="col-sm-4 control-label">Valor del Cheque a Girar</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="val_cheq" name="val_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" readonly="readonly" id="val_cheq" name="val_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 

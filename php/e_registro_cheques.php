@@ -21,7 +21,11 @@ if (isset($_REQUEST['envio'])) {
 	$cheque = strtoupper($cheque);
 	$beneficiario = $_REQUEST['benef'];
 	$beneficiario = strtoupper($beneficiario);
+
 	$monto = $_REQUEST['monto'];
+	$monto =  substr($monto,0,-2);
+	$monto  =preg_replace("/[^0-9]/", "", $monto);
+
 	$fecha_cheq = $_REQUEST['fecha_cheq'];
 	$fecha_con = $_REQUEST['fecha_con'];
 	$endoso = $_REQUEST['endoso'];
@@ -33,21 +37,33 @@ if (isset($_REQUEST['envio'])) {
 	//tabla detalles
 
 	$val_cheq = $_REQUEST['val_cheq'];
-	$file = $_FILES['file'];
 	$resp = $_REQUEST['resp'];
-	$ex = explode(".",$file['name'][0]);
-	$ext = (count($ex))-1;
-	$archivo = "$cheque-$endoso-$fecha_cheq.$ex[$ext]";
-	$archivo = normaliza($archivo);
-	$dir = "../archivos_cheques/";
-	$dir = $dir.$archivo;
 	$banco_gira = $_REQUEST['banco_gira'];
 	$cuenta_gira = $_REQUEST['cuenta_gira'];
 
-	move_uploaded_file($file['tmp_name'][0], $dir);
+
+
+	$tmpFilePath = $_FILES['file']['tmp_name'][0];
+	if ($tmpFilePath != '') {
+			$file = $_FILES['file'];
+			$ex = explode(".",$file['name'][0]);
+			$ext = (count($ex))-1;
+			$archivo = "$cheque-$endoso-$fecha_cheq.$ex[$ext]";
+			$archivo = normaliza($archivo);
+			$dir = "../archivos_cheques/";
+			$dir = $dir.$archivo;
+			move_uploaded_file($file['tmp_name'][0], $dir);
+	}
+
+;
 
 	//insertar en la base de datos
-			$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
+			if (isset($archivo)) {
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
+			}else{
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira')";
+			}
+			
 		$con->query($query01) or trigger_error($con->error);
 			$idinsertado = $con->insert_id;
 		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar) VALUES ('$idinsertado','$fecha_con','$int','$dias','$val_int', '$monto', '$val_cheq')";

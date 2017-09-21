@@ -11,9 +11,7 @@ $(document).ready(function() {
 	$('#interes').load('php/consulta_interes.php');
 	$('#banco_gira').load('php/consulta_bancos_trust.php?bancos_trust');
 	
-	$('#monto').maskMoney({thousands:'.', decimal:',',precision: 0});
-	$('#val_cheq').maskMoney({thousands:'.', decimal:',',precision: 0});
-		
+	$('#monto').maskMoney({thousands:'.', decimal:',',precision: 2});
 
 	setTimeout(Cselect, 1000);
 	
@@ -152,15 +150,15 @@ var Cselect = function(){
 
 var calculos = function(){
 		var int = parseFloat($('#interes').val());
-		var val = $('#monto').maskMoney('unmasked')[0];
-		var dia = parseInt($('#num_dias').val());
+			var val = $('#monto').maskMoney('unmasked')[0];
+			var dia = parseInt($('#num_dias').val());
 		var cuot = +(val*int)/30;
-		cuot = cuot.toFixed();
+			cuot = cuot.toFixed();
 		var valint = +(dia*cuot);
-		valint = valint.toFixed();
-		var valcheq = val-valint;
+			valint = valint.toFixed();
+			var valcheq = val-valint;
 		valcheq = valcheq.toFixed();
-		$('#cuota_dia').val(cuot);
+			$('#cuota_dia').val(cuot);
 		$('#val_int').val(valint);
 		$('#val_cheq').val(valcheq);
 		$('#letras').load('php/numeros_letras.php?monto='+val);
@@ -228,7 +226,7 @@ var revisar_info = function(){
 	}else{
 		codeerror = 1;
 	}
-	
+
 	if (codeerror == 1) {
 		calculos();
 		view_calcu();
