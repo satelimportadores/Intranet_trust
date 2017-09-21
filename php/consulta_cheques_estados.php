@@ -48,7 +48,7 @@
             $id_cheque = $_REQUEST['id_cheque'];
            //traer categorias   
               $interes = new Conexion;
-              $sql01 = "SELECT interes FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $sql01 = "SELECT interes FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\" LIMIT 1";
               $Rinteres = $interes->query($sql01) or trigger_error($interes->error);
           //traer interes
           if (!$Rinteres) {
@@ -68,7 +68,7 @@
             $id_cheque = $_REQUEST['id_cheque'];
            //traer categorias   
               $monto = new Conexion;
-              $sql01 = "SELECT monto FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $sql01 = "SELECT monto FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\" LIMIT 1";
               $Rmonto = $monto->query($sql01) or trigger_error($monto->error);
           //traer monto
           if (!$Rmonto) {
@@ -88,7 +88,7 @@
             $id_cheque = $_REQUEST['id_cheque'];
            //traer categorias   
               $valor_girar = new Conexion;
-              $sql01 = "SELECT valor_girar FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $sql01 = "SELECT valor_girar FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\" LIMIT 1";
               $Rvalor_girar = $valor_girar->query($sql01) or trigger_error($valor_girar->error);
           //traer valor_girar
           if (!$Rvalor_girar) {
@@ -108,7 +108,7 @@
             $id_cheque = $_REQUEST['id_cheque'];
            //traer categorias   
               $fecha_cheque = new Conexion;
-              $sql01 = "SELECT fecha_cheque FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\"";
+              $sql01 = "SELECT fecha_cheque FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\" LIMIT 1";
               $Rfecha_cheque = $fecha_cheque->query($sql01) or trigger_error($fecha_cheque->error);
           //traer fecha_cheque
           if (!$Rfecha_cheque) {

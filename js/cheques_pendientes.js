@@ -45,8 +45,9 @@ $(document).ready(function() {
 
             $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'fecha_cheque':'fecha_cheque'},function(data){
               fechaA = data;
-              $('#formulario_dinamico #fecha_cheq').val(data);
-              $('#formulario_dinamico #fecha_cheq').attr('min', data);
+              fechamin = moment(data);
+              $('#formulario_dinamico #fecha_cheq').val(fechamin.format("YYYY-MM-DD"));
+              $('#formulario_dinamico #fecha_cheq').attr('min', fechamin.format("YYYY-MM-DD"));
             });
 
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
