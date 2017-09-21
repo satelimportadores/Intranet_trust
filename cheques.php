@@ -35,6 +35,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <script src="js/moment.js"></script>
     <script src="js/registro_cheques.js"></script>
     <script src="js/registro_cheques_tabla.js"></script>
+    <script src="js/jquery-maskmoney.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -520,7 +521,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="monto" class="col-sm-4 control-label">Monto $</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="monto" name="monto" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" id="monto" name="monto" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                           <span id='monto-help' class="help-block"></span>
                         </div>
                       </div>
@@ -636,7 +637,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="val_cheq" class="col-sm-4 control-label">Valor del Cheque a Girar</label>
                         <div class="col-sm-8">
-                          <input type="number" class="form-control" id="val_cheq" name="val_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" id="val_cheq" name="val_cheq" parsley-trigger="change" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 

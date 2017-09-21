@@ -11,7 +11,9 @@ $(document).ready(function() {
 	$('#interes').load('php/consulta_interes.php');
 	$('#banco_gira').load('php/consulta_bancos_trust.php?bancos_trust');
 	
-	
+	$('#monto').maskMoney({thousands:'.', decimal:',',precision: 0});
+	$('#val_cheq').maskMoney({thousands:'.', decimal:',',precision: 0});
+		
 
 	setTimeout(Cselect, 1000);
 	
@@ -21,8 +23,8 @@ $(document).ready(function() {
 		var fecha = moment(fecha01);
 		dia = fecha.day();
 		dia_habiles(dia,fecha);
-
 	});
+
 
 
 	//abre endoso
@@ -118,7 +120,7 @@ $(document).ready(function() {
 		$('#endoso01').text($(this).val());
 	});
 
-	$('#monto,#interes,#btn-1').on('change click', function() {
+	$('#interes,#btn-1').on('change', function() {
 		calculos();
 	});
 
@@ -150,7 +152,7 @@ var Cselect = function(){
 
 var calculos = function(){
 		var int = parseFloat($('#interes').val());
-		var val = parseInt($('#monto').val());
+		var val = $('#monto').maskMoney('unmasked')[0];
 		var dia = parseInt($('#num_dias').val());
 		var cuot = +(val*int)/30;
 		cuot = cuot.toFixed();
@@ -161,7 +163,6 @@ var calculos = function(){
 		$('#cuota_dia').val(cuot);
 		$('#val_int').val(valint);
 		$('#val_cheq').val(valcheq);
-
 		$('#letras').load('php/numeros_letras.php?monto='+val);
 		$('#m').text(val);
 		$('#letras2').load('php/numeros_letras.php?monto='+valcheq);
@@ -227,16 +228,9 @@ var revisar_info = function(){
 	}else{
 		codeerror = 1;
 	}
-	// dato = $('#endoso').val();
-	// if (dato == '') {
-	// 	$('#endoso-help').html(error).fadeIn(500).fadeOut(8000);
-	// 	$('#endoso-help').focus();
-	// 	codeerror = 0;
-	// }else{
-	// 	codeerror = 1;
-	// }
-//cambio de caratula
+	
 	if (codeerror == 1) {
+		calculos();
 		view_calcu();
 	};
 	
