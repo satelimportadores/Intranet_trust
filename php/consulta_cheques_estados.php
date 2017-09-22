@@ -21,6 +21,25 @@
       }
 //Categorias
 
+//Categorias
+      if (isset($_REQUEST['paso02'])) {
+           //traer categorias   
+              $categorias = new Conexion;
+              $sql01 = "SELECT DISTINCT(categoria),cod_categoria FROM intranet_cheques_estado WHERE activo = 1 AND paso = 2 order by categoria ASC";
+              $Rcategorias = $categorias->query($sql01) or trigger_error($categorias->error);
+          //traer categorias
+          if (!$Rcategorias) {
+                Die ('Error');
+          }else{
+                  echo '<option value="">Seleccione una opción</option>';
+                while ($data = $Rcategorias->fetch_array()) {
+                  echo "<option value='$data[cod_categoria]'>$data[categoria]</option>";
+                }
+          } 
+            $categorias->close();
+      }
+//Categorias
+
 //Subcategorias
       if (isset($_REQUEST['subcategoria'])) {
 

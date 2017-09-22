@@ -591,7 +591,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         <label for="estado_cheque" class=" control-label">Estado de cheque</label>
                         <div class="" id="selectbox">
                           <select class="chosen-select chosen-transparent form-control" id="estado_cheque" name="estado_cheque" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
-                              <!--por php/consulta_cheques_estados?paso01-->
+                              <!--por php/consulta_cheques_estados?paso02-->
                           </select>
                         </div>
                       </div>
@@ -1059,7 +1059,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery_minimal.js"></script>
     <script src="js/moment.js"></script>
-    <script src="js/cheques_pendientes.js"></script>  
+    <script src="js/cheques_consignados.js"></script>  
     <script src="js/jquery.priceformat.min.js"></script>
 
     <!-- <script src="js/dia_habil.js"></script>-->

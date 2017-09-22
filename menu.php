@@ -37,6 +37,11 @@
                           <i class="fa fa-caret-right"></i>Cheques pendientes
                         </a>
                       </li>
+                      <li>
+                        <a href="cheques_consignados.php">
+                          <i class="fa fa-caret-right"></i>Cheques consignados
+                        </a>
+                      </li>
                     </ul>
                   </li>
 
