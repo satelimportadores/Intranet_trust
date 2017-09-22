@@ -1,4 +1,3 @@
-var fechaA;
 $(document).ready(function() {
 
 
@@ -44,7 +43,7 @@ $(document).ready(function() {
          id_cheque = $('#id_cheque').val();
 
             $.post('php/consulta_cheques_estados.php',{'id_cheque': id_cheque,'fecha_cheque':'fecha_cheque'},function(data){
-              fechaA = data;
+              $('#fecha_inicial').val(data);
               fechamin = moment(data);
               $('#formulario_dinamico #fecha_cheq').val(fechamin.format("YYYY-MM-DD"));
               $('#formulario_dinamico #fecha_cheq').attr('min', fechamin.format("YYYY-MM-DD"));
@@ -121,15 +120,15 @@ modal_editar = function (cheque_id, numero_cheque){
 }
 
 var calculos = function(){
-    interes = $('#formulario_dinamico #interes').val();
+    interes =parseFloat($('#formulario_dinamico #interes').val());
     var val = parseInt($('#formulario_dinamico #monto').val());
     var dia = parseInt($('#formulario_dinamico #num_dias').val());
     var cuot = +(val*interes)/30;
-    cuot = cuot.toFixed();
+      cuot = Math.round(cuot);
     var valint = +(dia*cuot);
-    valint = valint.toFixed();
+      valint = Math.round(valint);
     var valcheq = val-valint;
-    valcheq = valcheq.toFixed();
+      valcheq = Math.round(valcheq);
     $('#formulario_dinamico #cuota_dia').val(cuot);
     $('#formulario_dinamico #val_int').val(valint);
     $('#formulario_dinamico #monto').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
@@ -193,9 +192,9 @@ var festivos = function(fecha){
 }
 
 var cal_dias = function(fecha){
-  var fechaA = moment();
+  var fechaA = moment($('#fecha_inicial').val());
   var diferencia = fecha.diff(fechaA,"days");
-  $('#formulario_dinamico #num_dias').val(diferencia + 2);
+  $('#formulario_dinamico #num_dias').val(diferencia + 1);
 
 
 }

@@ -615,7 +615,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group">
                         <label for="num_dias" class="col-sm-4 control-label">Numero de Días</label>
                         <div class="col-sm-8">
-                          <input type="text" class="form-control" id="num_dias" name="num_dias" readonly="readonly" parsley-trigger="change" parsley-required="true" parsley-minlength="2" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" id="num_dias" name="num_dias" readonly="readonly" parsley-trigger="change" parsley-required="true" parsley-minlength="1" parsley-validation-minlength="1">
                         </div>
                       </div>
 

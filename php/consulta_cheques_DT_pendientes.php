@@ -8,7 +8,7 @@
   //traer cheques 
           
           if (!$Rcheques) {
-           Die ('Error');
+             echo 'No hay datos para mostrar';
           }else{
             while ($data = $Rcheques->fetch_array()) {
               $arreglo['data'][] =  $data;

@@ -497,7 +497,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                   <!-- tile header -->
                   <div class="tile-header">
-                    <h1><strong>Historial de cheques</h1>
+                    <h1><strong>Cheques consignados</h1>
                     <div class="controls">
                       <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
                       <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
@@ -576,6 +576,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                      <form  action="php/e_registro_cheques_aplazar.php" id="form_cheques" method="POST" accept-charset="utf-8">
 
                       <input type="hidden" id="id_cheque" name="id_cheque" value="">
+                      <input type="hidden" id="fecha_inicial" name="fecha_inicial" value="">
                       
                       <div class="form-group">
                         <label for="num_cheque" class=" control-label">Número de cheque</label>

@@ -13,6 +13,10 @@ $(document).ready(function() {
 	
 	$('#monto').maskMoney({thousands:'.', decimal:',',precision: 2});
 
+              hoy = moment();
+              $('#fecha_cheq').val(hoy.format("YYYY-MM-DD"));
+              $('#fecha_cheq').attr('min', hoy.format("YYYY-MM-DD"));
+
 	setTimeout(Cselect, 1000);
 	
 	$('#fecha_cheq').on('change',function(){
@@ -153,11 +157,12 @@ var calculos = function(){
 			var val = $('#monto').maskMoney('unmasked')[0];
 			var dia = parseInt($('#num_dias').val());
 		var cuot = +(val*int)/30;
-			cuot = cuot.toFixed();
+						cuot = Math.round(cuot);
 		var valint = +(dia*cuot);
-			valint = valint.toFixed();
+					valint = Math.round(valint);
 			var valcheq = val-valint;
-		valcheq = valcheq.toFixed();
+					valcheq = Math.round(valcheq);
+
 			$('#cuota_dia').val(cuot);
 		$('#val_int').val(valint);
 		$('#val_cheq').val(valcheq);
@@ -197,7 +202,7 @@ var revisar_info = function(){
 	dato = $('#num_cheq').val();
 	if (dato == '') {
 		$('#num_cheq-help').html(error).fadeIn(500).fadeOut(8000);
-		$('#num_cheq-help').focus();
+		$('#num_cheq').focus();
 	codeerror = 0;
 	}else{
 		codeerror = 1;
@@ -205,7 +210,6 @@ var revisar_info = function(){
 	dato = $('#benef').val();
 	if (dato == '') {
 		$('#benef-help').html(error).fadeIn(500).fadeOut(8000);
-		$('#benef-help').focus();
 	codeerror = 0;
 	}else{
 		codeerror = 1;
@@ -213,7 +217,7 @@ var revisar_info = function(){
 	dato = $('#monto').val();
 	if (dato == '') {
 		$('#monto-help').html(error).fadeIn(500).fadeOut(8000);
-		$('#monto-help').focus();
+		$('#monto').focus();
 		codeerror = 0;
 	}else{
 		codeerror = 1;
@@ -221,16 +225,15 @@ var revisar_info = function(){
 	dato = $('#fecha_cheq').val();
 	if (dato == '') {
 		$('#fecha_cheq-help').html(error).fadeIn(500).fadeOut(8000);
-		$('#fecha_cheq-help').focus();
 		codeerror = 0;
 	}else{
 		codeerror = 1;
 	}
-
+		alert(codeerror);
 	if (codeerror == 1) {
 		calculos();
 		view_calcu();
-	};
+	}
 	
 }
 
