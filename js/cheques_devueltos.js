@@ -7,7 +7,7 @@ $(document).ready(function() {
         "destroy":true,
             "ajax":{
                 "method":"POST",
-                "url": "php/consulta_cheques_DT_pendientes.php"
+                "url": "php/consulta_cheques_DT_devueltos.php"
               },
             "columns": [
             	{"":""},
@@ -52,7 +52,7 @@ $(document).ready(function() {
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
           $("#formulario_dinamico").trigger('create');
 
-          $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar.php');
+          $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar_devueltos.php');
 
        }else{
           $('#formulario_dinamico').html('');
@@ -201,3 +201,4 @@ var cal_dias = function(fecha){
 
 }
 //Calculo de dias habiles
+

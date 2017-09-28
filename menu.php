@@ -42,6 +42,11 @@
                           <i class="fa fa-caret-right"></i>Cheques consignados
                         </a>
                       </li>
+                      <li>
+                        <a href="cheques_devueltos.php">
+                          <i class="fa fa-caret-right"></i>Cheques devueltos
+                        </a>
+                      </li>
                     </ul>
                   </li>
 

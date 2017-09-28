@@ -11,7 +11,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cheques consignados</title>
+    <title>Cheques devueltos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
 
@@ -497,7 +497,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                   <!-- tile header -->
                   <div class="tile-header">
-                    <h1><strong>Cheques consignados</h1>
+                    <h1><strong>Cheques devueltos</h1>
                     <div class="controls">
                       <a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
                       <a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
@@ -591,7 +591,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         <label for="estado_cheque" class=" control-label">Estado de cheque</label>
                         <div class="" id="selectbox">
                           <select class="chosen-select chosen-transparent form-control" id="estado_cheque" name="estado_cheque" parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
-                              <!--por php/consulta_cheques_estados?paso02-->
+                              <!--por php/consulta_cheques_estados?paso01-->
                           </select>
                         </div>
                       </div>
@@ -1059,7 +1059,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery_minimal.js"></script>
     <script src="js/moment.js"></script>
-    <script src="js/cheques_consignados.js"></script>  
+    <script src="js/cheques_devueltos.js"></script>  
     <script src="js/jquery.priceformat.min.js"></script>
 
     <!-- <script src="js/dia_habil.js"></script>-->

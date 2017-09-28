@@ -11,7 +11,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Minimal 1.3 - Blank Page</title>
+    <title>Cheques pendientes</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
 
