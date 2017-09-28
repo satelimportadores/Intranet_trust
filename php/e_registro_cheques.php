@@ -66,7 +66,7 @@ if (isset($_REQUEST['envio'])) {
 			
 		$con->query($query01) or trigger_error($con->error);
 			$idinsertado = $con->insert_id;
-		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar) VALUES ('$idinsertado','$fecha_con','$int','$dias','$val_int', '$monto', '$val_cheq')";
+		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar,activo) VALUES ('$idinsertado','$fecha_con','$int','$dias','$val_int', '$monto', '$val_cheq',1)";
 		$con->query($query02) or trigger_error($con->error);
 	//insertar en la base de datos
 header('Location: ../inicio.php');

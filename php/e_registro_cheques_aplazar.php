@@ -24,7 +24,10 @@ if (isset($_REQUEST['id_cheque'])) {
 			$Cdetalle = new Conexion ;
 				$acentos = $Cdetalle->query("SET NAMES 'utf8'");
 
-					     $sql01 = "INSERT INTO intranet_cheques_info_detalle  (id_cheque,monto,valor_girar,fecha_cheque,interes,dias,valor_interes,forma_pago_interes) VALUES (\"$id_cheque\",\"$monto\",\"$valor_girar\",\"$fecha_con\",\"$interes\",\"$num_dias\",\"$val_int\",\"$forma_pago_interes\");";
+					     $sql = "UPDATE intranet_cheques_info_detalle SET activo = 0 WHERE id_cheque = \"$id_cheque\"";
+					     $Cdetalle->query($sql) or trigger_error($Cdetalle->error);
+
+					     $sql01 = "INSERT INTO intranet_cheques_info_detalle  (id_cheque,monto,valor_girar,fecha_cheque,interes,dias,valor_interes,forma_pago_interes,activo) VALUES (\"$id_cheque\",\"$monto\",\"$valor_girar\",\"$fecha_con\",\"$interes\",\"$num_dias\",\"$val_int\",\"$forma_pago_interes\",1);";
 					     $Cdetalle->query($sql01) or trigger_error($Cdetalle->error);
 
 					     $sql02 = "UPDATE intranet_cheques_info SET estado = 'aplazado' WHERE id = \"$id_cheque\"";

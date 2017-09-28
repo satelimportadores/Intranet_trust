@@ -229,7 +229,7 @@ var revisar_info = function(){
 	}else{
 		codeerror = 1;
 	}
-		alert(codeerror);
+
 	if (codeerror == 1) {
 		calculos();
 		view_calcu();
