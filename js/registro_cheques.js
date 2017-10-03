@@ -161,7 +161,7 @@ var calculos = function(){
 		var valint = +(dia*cuot);
 					valint = Math.round(valint);
 			var valcheq = val-valint;
-					valcheq = Math.round(valcheq);
+					valcheq = Math.round(valcheq/100)*100;
 
 			$('#cuota_dia').val(cuot);
 		$('#val_int').val(valint);

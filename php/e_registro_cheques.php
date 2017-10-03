@@ -59,9 +59,9 @@ if (isset($_REQUEST['envio'])) {
 
 	//insertar en la base de datos
 			if (isset($archivo)) {
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira')";
 			}else{
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_cheq','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira')";
 			}
 			
 		$con->query($query01) or trigger_error($con->error);

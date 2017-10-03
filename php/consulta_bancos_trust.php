@@ -24,6 +24,19 @@ header('Content-Type: text/html; charset=utf-8');
 			$arreglo[] = $row;
 		}
 	echo json_encode($arreglo);
-	}	
+	}
+
+	if (isset($_REQUEST['consigno'])) {
+
+	$con = new conexion;
+	$query = "SELECT id,nom_banco,cuenta_banco FROM intranet_bancos_trust";
+	$Rbancos = $con->query($query) or trigger_error($con->error);
+	$con->close();
+	echo "<option value=''>Seleccione un banco</option>";
+		while ($row = $Rbancos->fetch_array()) {
+			echo "<option value='$row[id]'>$row[nom_banco] - $row[cuenta_banco]</option>";
+		}
+
+	}
 ?>
 

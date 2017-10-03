@@ -73,6 +73,16 @@
                         </div>
                       </div>
 
+                      <div class="form-group" id="cuenta">
+                        <label for="cuenta-consigno" class="col-sm-4 control-label">Cuenta donde consigno</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="cuenta-consigno" id="cuenta-consigno">
+                                    <!-- se carga por php/consulta_bancos_trust.php?consigno -->
+                          </select>
+                          <span id='cuenta-consigno-help' class="help-block"></span>
+                        </div>
+                      </div>
+
 
                     
 

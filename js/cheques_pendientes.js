@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-	
      //data table
       var table = $('#TblCheques').DataTable({
         "destroy":true,
@@ -26,7 +24,6 @@ $(document).ready(function() {
 
 	table.on("click", "tr",function(){
 		var data = table.row($(this).closest('tr')).data();
-		//console.log(data);
 		cheque_id = (data.id);
     if (cheque_id != 'No hay registros...') {
           numero_cheque = (data.numero_cheque);
@@ -53,7 +50,7 @@ $(document).ready(function() {
 
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
           $("#formulario_dinamico").trigger('create');
-
+          setTimeout("$('#formulario_dinamico #cuenta').hide();", 100);
           $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar.php');
 
        }else{
@@ -95,6 +92,26 @@ $('#descartar').click(function() {
 });
 //Boton descartar
 
+//Si cambia a consignacion en formulario dinamico
+$('#formulario_dinamico').on("change","#forma_pago_interes",function(){
+  pago_interes = $('#formulario_dinamico #forma_pago_interes').val();
+    if (pago_interes == 'consigancion') {
+      $('#formulario_dinamico #cuenta').show();
+        $.ajax({
+          url: 'php/consulta_bancos_trust.php?consigno',
+          type: 'POST',
+        })
+        .done(function(data) {
+           $('#formulario_dinamico #cuenta-consigno').append(data)
+        })   
+
+    }else{
+       $('#formulario_dinamico #cuenta-consigno').empty();
+       $('#formulario_dinamico #cuenta').hide();
+    }
+})
+//Si cambia a consignacion en formulario dinamico
+
 });
 
 //FUNCIONES
@@ -114,9 +131,6 @@ modal_editar = function (cheque_id, numero_cheque){
           $("#estado_cheque" ).empty();
           $("#estado_cheque" ).append( data );
           $("#estado_cheque").chosen({});
-        })
-        .fail(function() {
-          console.log("error");
         })
         
   //traer categorias de estado cheques

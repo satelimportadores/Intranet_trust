@@ -16,7 +16,13 @@ if (isset($_REQUEST['id_cheque'])) {
 	$val_int  =preg_replace("/[^0-9]/", "", $val_int);
 	$valor_girar = $_REQUEST['valor_girar'];
 	$valor_girar  =preg_replace("/[^0-9]/", "", $valor_girar);
+	
 
+	if (isset($_REQUEST['cuenta-consigno'])) {
+		$cuenta_consignacion = $_REQUEST['cuenta-consigno'];
+	}else{
+		$cuenta_consignacion = 0;
+	}
 
 
 		//Subir y actualizar tablas
@@ -27,7 +33,7 @@ if (isset($_REQUEST['id_cheque'])) {
 					     $sql = "UPDATE intranet_cheques_info_detalle SET activo = 0 WHERE id_cheque = \"$id_cheque\"";
 					     $Cdetalle->query($sql) or trigger_error($Cdetalle->error);
 
-					     $sql01 = "INSERT INTO intranet_cheques_info_detalle  (id_cheque,monto,valor_girar,fecha_cheque,interes,dias,valor_interes,forma_pago_interes,activo) VALUES (\"$id_cheque\",\"$monto\",\"$valor_girar\",\"$fecha_con\",\"$interes\",\"$num_dias\",\"$val_int\",\"$forma_pago_interes\",1);";
+					     $sql01 = "INSERT INTO intranet_cheques_info_detalle  (id_cheque,monto,valor_girar,fecha_cheque,interes,dias,valor_interes,forma_pago_interes,activo,forma_pago_interes_cuenta) VALUES (\"$id_cheque\",\"$monto\",\"$valor_girar\",\"$fecha_con\",\"$interes\",\"$num_dias\",\"$val_int\",\"$forma_pago_interes\",1,\"$cuenta_consignacion\");";
 					     $Cdetalle->query($sql01) or trigger_error($Cdetalle->error);
 
 					     $sql02 = "UPDATE intranet_cheques_info SET estado = 'aplazado' WHERE id = \"$id_cheque\"";
