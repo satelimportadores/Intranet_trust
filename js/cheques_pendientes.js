@@ -28,8 +28,10 @@ $(document).ready(function() {
 		var data = table.row($(this).closest('tr')).data();
 		//console.log(data);
 		cheque_id = (data.id);
-		numero_cheque = (data.numero_cheque);
-		modal_editar(cheque_id,numero_cheque);
+    if (cheque_id != 'No hay registros...') {
+          numero_cheque = (data.numero_cheque);
+          modal_editar(cheque_id,numero_cheque);
+    }
 		
 	});
 
@@ -197,7 +199,6 @@ var cal_dias = function(fecha){
   var fechaA = moment($('#fecha_inicial').val());
   var diferencia = fecha.diff(fechaA,"days");
   $('#formulario_dinamico #num_dias').val(diferencia + 1);
-
 
 }
 //Calculo de dias habiles
