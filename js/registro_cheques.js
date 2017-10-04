@@ -32,7 +32,9 @@ $(document).ready(function() {
 		if (fondos == 'cheque') {
 			$('.banco').fadeIn();
 		}else{
+			$('.banco option:selected').removeAttr('selected');
 			$('.banco').fadeOut();
+			$('.cuenta option:selected').removeAttr('selected');
 			$('.cuenta').fadeOut();
 		}
 	});
