@@ -655,9 +655,22 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       </div>
 
                       <div class="form-group">
+                        <label for="fondos" class="col-sm-4 control-label">Salida de fondos</label>
+                        <div class="col-sm-8" id="selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="fondos" id="fondos" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                                   <option value="">Selecciones la salida de fondos</option>
+                                   <option value="efectivo">Efectivo</option>
+                                   <option value="cheque">Cheque</option>
+                          </select>
+                          <span id='fondos-help' class="help-block"></span>
+                        </div>
+                      </div>
+
+
+                      <div class="form-group banco">
                         <label for="banco_gira" class="col-sm-4 control-label">Banco giro</label>
                         <div class="col-sm-8" id="selectbox">
-                          <select class="chosen-select chosen-transparent form-control" name="banco_gira" id="banco_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="banco_gira" id="banco_gira">
                                     <!-- se carga por php/consulta_bancos_trust.php -->
                           </select>
                           <span id='banco_gira-help' class="help-block"></span>
@@ -667,7 +680,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group cuenta">
                         <label for="cuenta_gira" class="col-sm-4 control-label">Cuenta giro</label>
                         <div class="col-sm-8" id="selectbox">
-                          <select class="chosen-select chosen-transparent form-control" name="cuenta_gira" id="cuenta_gira" required parsley-trigger="change" parsley-required="true" parsley-error-container="#selectbox">
+                          <select class="chosen-select chosen-transparent form-control" name="cuenta_gira" id="cuenta_gira">
                                     <!-- se carga por php/consulta_bancos_trust.php -->
                           </select>
                           <span id='cuenta_gira-help' class="help-block"></span>

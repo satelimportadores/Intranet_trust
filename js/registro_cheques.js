@@ -2,7 +2,7 @@ var fecha01;
 var fecha;
 $(document).ready(function() {
 
-
+	$('.banco').hide();
 	$('.cuenta').hide();
 	$('.endosohide').hide();
 	$('#por_consig').load('php/consulta_cheques.php?a=1');
@@ -26,6 +26,18 @@ $(document).ready(function() {
 		dia = fecha.day();
 		dia_habiles(dia,fecha);
 	});
+
+	$('#fondos').on('change',function() {
+		fondos = $('#fondos').val();
+		if (fondos == 'cheque') {
+			$('.banco').fadeIn();
+		}else{
+			$('.banco').fadeOut();
+			$('.cuenta').fadeOut();
+		}
+	});
+
+
 
 
 
@@ -69,6 +81,7 @@ $(document).ready(function() {
  										$('#cuenta_gira').append( '<option value="'+ArrayDatos[i].id+'">'+ArrayDatos[i].cuenta_banco+' '+ArrayDatos[i].propietario+'</option>' );
 								      }
 							$('.cuenta').fadeIn(500);
+							$('.banco').fadeIn();
 						})
 						.fail(function(data) {
 							console.log("error"+data);
@@ -186,19 +199,18 @@ var view_cheques = function(){
 		$('#info').hide();
 		$('#calcu').hide();
 		$('#cheques').show();
+		efectivo = $('#banco_gira option:selected').text();
+			if (efectivo == 'Seleccione un banco') {
+				$('#bank2').text('Pago en efectivo');
+			}
+
 }
 
 var revisar_info = function(){
 	var codeerror = 0;
 	var error = '<span class="color-red">Este campo es obligatorio<span>';
 
-	dato = $('#bancos').val();
-	if (dato == '') {
-		$('#bancos-help').html(error).fadeIn(500).fadeOut(8000);
-	codeerror = 0;
-	}else{
-		codeerror = 1;
-	}
+
 	dato = $('#num_cheq').val();
 	if (dato == '') {
 		$('#num_cheq-help').html(error).fadeIn(500).fadeOut(8000);
@@ -238,9 +250,18 @@ var revisar_info = function(){
 }
 
 var revisar_calcu = function(){
+
+
 	var codeerror = 0;
 	var error = '<span class="color-red">Este campo es obligatorio<span>';
 
+	dato = $('#fondos').val();
+	if (dato == '') {
+		$('#fondos-help').html(error).fadeIn(500).fadeOut(8000);
+	codeerror = 0;
+	}else{
+		codeerror = 1;
+	}
 	dato = $('#resp').val();
 	if (dato == '') {
 		$('#resp-help').html(error).fadeIn(500).fadeOut(8000);
@@ -248,13 +269,7 @@ var revisar_calcu = function(){
 	}else{
 		codeerror = 1;
 	}
-	dato = $('#banco_gira').val();
-	if (dato == '') {
-		$('#banco_gira-help').html(error).fadeIn(500).fadeOut(8000);
-	codeerror = 0;
-	}else{
-		codeerror = 1;
-	}
+
 
 //cambio de caratula
 	if (codeerror == 1) {
