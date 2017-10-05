@@ -8,7 +8,6 @@ $(document).ready(function() {
                 "url": "php/consulta_cheques_DT_pendientes.php"
               },
             "columns": [
-            	{"":""},
             	{ "data": "id" },
                 { "data": "fecha" },
                 { "data": "numero_cheque" },

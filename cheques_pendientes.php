@@ -516,12 +516,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
                     <table class="table table-bordered table-striped" id="TblCheques">
                       <thead>
                         <tr>
-                          <th>
-                            <div class="checkbox check-transparent">
-                              <input type="checkbox" value="1" id="allchck">
-                              <label for="allchck"></label>
-                            </div>
-                          </th>
                            <th class="sortable sort-alpha sort-asc">ID</th>
                           <th class="sortable sort-alpha sort-asc">Fecha</th>
                           <th class="sortable sort-alpha">Número de cheque</th>
