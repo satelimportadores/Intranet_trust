@@ -85,7 +85,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
             <!-- Search -->
             <div class="search" id="main-search">
-              <i class="fa fa-search"></i> <input type="text" placeholder="Search...">
+              <i class="fa fa-search"></i> <input type="text" placeholder="Buscar...">
             </div>
             <!-- Search end -->
 

@@ -98,7 +98,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
             <!-- Search -->
             <div class="search" id="main-search">
-              <i class="fa fa-search"></i> <input type="text" placeholder="Search...">
+              <i class="fa fa-search"></i> <input type="text" placeholder="Buscar...">
             </div>
             <!-- Search end -->
 
@@ -118,10 +118,10 @@ $user_permisos = $_SESSION["nivel_permisos"];
                     <a href="#">
                       <div class="task-info">
                         <div class="desc">Layout</div>
-                        <div class="percent">80%</div>
+                        <div class="percent">90%</div>
                       </div>
                       <div class="progress progress-striped progress-thin">
-                        <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <div class="progress-bar progress-bar-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                           <span class="sr-only">40% Complete (success)</span>
                         </div>
                       </div>
