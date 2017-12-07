@@ -320,7 +320,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                   <img src="assets/images/profile-photo.jpg" alt />
                 </div>
                 <a class="dropdown-toggle options" data-toggle="dropdown" href="#">
-                  John Douey <i class="fa fa-caret-down"></i>
+                  <?php echo ($user_nombre); ?> <i class="fa fa-caret-down"></i>
                 </a>
                 
                 <ul class="dropdown-menu arrow settings">
@@ -463,7 +463,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
               <ol class="breadcrumb">
                           <?php
                             $crumbs = explode("/",$_SERVER["REQUEST_URI"]);
-                                 echo ('<li>Usted esta aqui</li>');
+                                 
                                   foreach($crumbs as $crumb){
                                       echo ('<li>'.$crumb.'</li>');
                                   }

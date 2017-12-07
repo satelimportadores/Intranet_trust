@@ -3056,7 +3056,7 @@ select.form-control.input-lg + .chosen-container .chosen-choices .search-field i
 
 .pageheader .breadcrumbs ol.breadcrumb { background-color: transparent; margin-bottom: 0; }
 
-.pageheader .breadcrumbs ol.breadcrumb > li { font-size: 12px; font-weight: 500; color: rgba(255, 255, 255, 0.6); }
+.pageheader .breadcrumbs ol.breadcrumb > li { font-size: 12px; font-weight: 500; color: rgba(6, 129, 236, 1); }
 
 .pageheader .breadcrumbs ol.breadcrumb > li.active { color: rgba(0, 0, 0, 0.4); }
 
