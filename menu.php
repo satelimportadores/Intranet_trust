@@ -43,8 +43,18 @@
                         </a>
                       </li>
                       <li>
+                        <a href="cheques_aplazados.php">
+                          <i class="fa fa-caret-right"></i>Cheques aplazados
+                        </a>
+                      </li>
+                      <li>
                         <a href="cheques_devueltos.php">
                           <i class="fa fa-caret-right"></i>Cheques devueltos
+                        </a>
+                      </li>
+                      <li>
+                        <a href="cheques_historial.php">
+                          <i class="fa fa-caret-right"></i>Cheques historial 
                         </a>
                       </li>
                     </ul>
