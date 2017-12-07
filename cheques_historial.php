@@ -566,7 +566,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                        
                         <div class="modal-header">
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-                          <h4 class="modal-title">Editar estado de cheque</h4>
+                          <h4 class="modal-title">Historial del cheque</h4>
                         </div>
                         <div class="modal-body">
                               
@@ -593,60 +593,65 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Beneficiario</label>
+                        <label for="beneficiario" class=" control-label">Beneficiario</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="beneficiario" id="beneficiario" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Fecha del cheque</label>
+                        <label for="fecha_cheque" class=" control-label">Fecha del cheque</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="fecha_cheque" id="fecha_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Adjunto</label>
+                        <label for="estado" class=" control-label">Estado</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="estado" id="estado" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
-                      --------------------------------
-
-                                            <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Banco que gira</label>
-                        <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
-                        </div>
+                      <div class="form-group">
+                        <label for="cheque_adjunto" class=" control-label">Adjunto</label>
+                            <div id="cheque_adjunto" class="profile-photo">
+                                  <!-- Se llena por ajax-->
+                            </div>
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Cuenta del banco</label>
+                        <label for="banco_gira" class=" control-label">Banco que gira</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
-                        </div>
-                      </div>
-
-                                            <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Tipo de fondos</label>
-                        <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="banco_gira" id="banco_gira" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Monto</label>
+                        <label for="cuenta_banco" class=" control-label">Cuenta del banco</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="cuenta_banco" id="cuenta_banco" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
                                             <div class="form-group">
-                        <label for="num_cheque" class=" control-label">Valor girado</label>
+                        <label for="tipo_fondos" class=" control-label">Tipo de fondos</label>
                         <div class="">
-                          <input type="text" class="form-control" name="num_cheque" id="num_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="tipo_fondos" id="tipo_fondos" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                                            <div class="form-group">
+                        <label for="monto" class=" control-label">Monto</label>
+                        <div class="">
+                          <input type="text" class="form-control" name="monto" id="monto" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                                            <div class="form-group">
+                        <label for="valor_girar" class=" control-label">Valor girado</label>
+                        <div class="">
+                          <input type="text" class="form-control" name="valor_girar" id="valor_girar" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
@@ -657,20 +662,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                  </div>
                   <!-- /tile body -->
 
-                              
- 
-
-                              <br>
-                                  
-                                    <div class="form-group form-footer">
-                                       <div class="form-group">
-                                        <div class="col-sm-offset-4 col-sm-8">
-                                          <button type="submit" class="btn btn-green">Guardar</button>
-                                          <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
-                                        </div>
-                                      </div>
-                                    </div>
-
+                                
                                 <div class="modal-footer">
                                 </div>
                           </form> 

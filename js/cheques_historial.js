@@ -63,11 +63,43 @@ modal_editar = function (cheque_id, numero_cheque){
           data: {'id_cheque': cheque_id},
         })
         .done(function(data) {
-            console.log("success"+data);
+            //console.log("success"+data);
            var ArrayInfo = jQuery.parseJSON(data);
-
                 $('#nom_banco').val(ArrayInfo[0].nom_banco);
-            console.log(ArrayInfo[0].nom_banco);
+                $('#beneficiario').val(ArrayInfo[0].beneficiario);
+                $('#fecha_cheque').val(ArrayInfo[0].fecha_cheque);
+                adjunto = ArrayInfo[0].adjunto;
+                $('#cheque_adjunto').html("<img src='archivos_cheques/"+adjunto+"'></div>");
+                estado = ArrayInfo[0].estado;
+                switch(estado) {
+                        case 'por_consig':
+                              $('#estado').val('Cheque por consignar');consignado
+                            break;
+                        case 'consignado':
+                              $('#estado').val('Cheque consignado');
+                            break;
+                        case 'aplazado':
+                              $('#estado').val('Cheque aplazado');
+                            break;
+                        case 'devuelto':
+                              $('#estado').val('Cheque devuelto');
+                            break;
+                        default:
+                            $('#estado').val('');
+                  }
+                
+                $('#banco_gira').val(ArrayInfo[0].banco_gira);
+                $('#cuenta_banco').val(ArrayInfo[0].cuenta_banco);
+                $('#tipo_fondos').val(ArrayInfo[0].tipo_fondos);
+                $('#monto').val(ArrayInfo[0].monto);
+                $('#monto').priceFormat({ prefix: '$ ', thousandsSeparator: ',', clearOnEmpty: true });
+                $('#valor_girar').val(ArrayInfo[0].valor_girar);
+                $('#valor_girar').priceFormat({ prefix: '$ ', thousandsSeparator: ',', clearOnEmpty: true });
+                
+                
+                
+                
+                
 
         })
   //traer  cheques
