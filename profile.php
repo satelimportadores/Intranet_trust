@@ -462,10 +462,14 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
             <div class="breadcrumbs">
               <ol class="breadcrumb">
-                <li>You are here</li>
-                <li><a href="index.html">Minimal</a></li>
-                <li><a href="#">Example Pages</a></li>
-                <li class="active">Blank Page</li>
+                          <?php
+                            $crumbs = explode("/",$_SERVER["REQUEST_URI"]);
+                                 echo ('<li>Usted esta aqui</li>');
+                                  foreach($crumbs as $crumb){
+                                      echo ('<li>'.$crumb.'</li>');
+                                  }
+                        ?>
+
               </ol>
             </div>
 
