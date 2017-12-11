@@ -39,10 +39,10 @@ $cliente->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8" />
 
-    <link rel="icon" type="image/ico" href="assets/images/favicon.ico" />
+    <link rel="icon" type="image/ico" href="assets/images/trust-favicon.png" />
     <!-- Bootstrap -->
     <link href="assets/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/vendor/animate/animate.css">
     <link type="text/css" rel="stylesheet" media="all" href="assets/js/vendor/mmenu/css/jquery.mmenu.all.css" />
     <link rel="stylesheet" href="assets/js/vendor/videobackground/css/jquery.videobackground.css">

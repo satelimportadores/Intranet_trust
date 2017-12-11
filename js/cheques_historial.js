@@ -98,7 +98,7 @@ modal_editar = function (cheque_id, numero_cheque){
                 estado = ArrayInfo[0].estado;
                 switch(estado) {
                         case 'por_consig':
-                              $('#estado').val('Cheque por consignar');consignado
+                              $('#estado').val('Cheque por consignar');
                             break;
                         case 'consignado':
                               $('#estado').val('Cheque consignado');
