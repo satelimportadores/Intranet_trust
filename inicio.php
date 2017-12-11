@@ -521,7 +521,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
                   </div>
                   <div class="back">
-                    <a href="#">
+                    <a href="cheques_pendientes.php">
                       <i class="fa fa-bar-chart-o fa-4x"></i>
                       <span>Ver detalles</span>
                     </a>  
