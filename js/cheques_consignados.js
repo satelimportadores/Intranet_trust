@@ -53,12 +53,15 @@ $(document).ready(function() {
     if (cheque_id != 'No hay registros...') {
           numero_cheque = (data.numero_cheque);
           modal_editar(cheque_id,numero_cheque);
+          $( "#BtnGuardar" ).prop( "disabled", true );
     }
 
 	});
 
 //traer formulario dinamico
  $('#estado_cheque').change(function() {
+
+    $( "#BtnGuardar" ).prop( "disabled", true );
 
     categoria = $('#estado_cheque').val();
     
@@ -94,11 +97,26 @@ $(document).ready(function() {
        }else{
           $('#formulario_dinamico').html('');
           $('#form_cheques').prop('action', 'php/e_registro_cheques_efectivo.php');
+          $( "#BtnGuardar" ).prop( "disabled", false );
+
        }
  });
 //traer formulario dinamico
 
+//activar boton guardar en Devuelto
 
+
+ $("#formulario_dinamico").on("change", "#mot_devolucion", function(){
+      mot_dev = $('#mot_devolucion').val();
+        //console.log(mot_dev);
+        if (mot_dev != '') {
+          $( "#BtnGuardar" ).prop( "disabled", false );
+        }else{
+          $( "#BtnGuardar" ).prop( "disabled", true );
+        }
+});
+
+//activar boton guardar en Devuelto
 
 //Boton descartar
 $('#descartar').click(function() {

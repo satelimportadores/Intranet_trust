@@ -611,7 +611,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                                     <div class="form-group form-footer">
                                        <div class="form-group">
                                         <div class="col-sm-offset-4 col-sm-8">
-                                          <button type="submit" class="btn btn-green">Guardar</button>
+                                          <button type="submit" id="BtnGuardar" class="btn btn-green">Guardar</button>
                                           <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
                                         </div>
                                       </div>

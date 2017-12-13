@@ -52,12 +52,15 @@ $(document).ready(function() {
     if (cheque_id != 'No hay registros...') {
           numero_cheque = (data.numero_cheque);
           modal_editar(cheque_id,numero_cheque);
+          $( "#BtnGuardar" ).prop( "disabled", true );
     }
 		
 	});
 
 //traer formulario dinamico
  $('#estado_cheque').change(function() {
+
+  $( "#BtnGuardar" ).prop( "disabled", true );
 
     categoria = $('#estado_cheque').val();
     
@@ -69,9 +72,12 @@ $(document).ready(function() {
               $('#fecha_inicial').val(data);
               //fechamin = moment(); Ahora
               fechamin = moment(data);
-              $('#formulario_dinamico #fecha_cheq').val(fechamin.format("YYYY-MM-DD"));
-              $('#formulario_dinamico #fecha_cheq').attr('min', fechamin.format("YYYY-MM-DD"));
+              fecha_cheque = fechamin.format("YYYY-MM-DD");
+              $('#formulario_dinamico #fecha_cheq').val(fecha_cheque);
+              $('#formulario_dinamico #fecha_cheq').attr('min', fecha_cheque);
+                  $( "#BtnGuardar" ).prop( "disabled", true );
             });
+
 
           $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
           $("#formulario_dinamico").trigger('create');
@@ -81,6 +87,7 @@ $(document).ready(function() {
        }else{
           $('#formulario_dinamico').html('');
           $('#form_cheques').prop('action', 'php/e_registro_cheques_consignado.php');
+          $( "#BtnGuardar" ).prop( "disabled", false );
        }
  });
 //traer formulario dinamico
@@ -178,6 +185,7 @@ var calculos = function(){
     $('#formulario_dinamico #valor_girar').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
     $('#formulario_dinamico #cuota_dia').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
     $('#formulario_dinamico #val_int').priceFormat({prefix: '$ ',suffix: '', centsLimit: 0});
+    $( "#BtnGuardar" ).prop( "disabled", false );
 }
 //Calculo de dias habiles
 var dia_habiles = function(dia,fecha){

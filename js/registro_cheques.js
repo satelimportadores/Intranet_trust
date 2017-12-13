@@ -15,16 +15,15 @@ $(document).ready(function() {
 
               hoy = moment();
               $('#fecha_cheq').val(hoy.format("YYYY-MM-DD"));
+              $('#fecha_con').val(hoy.format("YYYY-MM-DD"));
               $('#fecha_cheq').attr('min', hoy.format("YYYY-MM-DD"));
+              $('#fecha_con').attr('min', hoy.format("YYYY-MM-DD"));
+              cambio_fecha();
 
 	setTimeout(Cselect, 1000);
 	
 	$('#fecha_cheq').on('change',function(){
-		var fecha01 = $('#fecha_cheq').val();
-			$('#fecha').text(fecha01);
-		var fecha = moment(fecha01);
-		dia = fecha.day();
-		dia_habiles(dia,fecha);
+		cambio_fecha();
 	});
 
 	$('#fondos').on('change',function() {
@@ -205,7 +204,6 @@ var view_cheques = function(){
 			if (efectivo == 'Seleccione un banco') {
 				$('#bank2').text('Pago en efectivo');
 			}
-
 }
 
 var revisar_info = function(){
@@ -222,6 +220,7 @@ var revisar_info = function(){
 		codeerror = 1;
 	}
 	dato = $('#benef').val();
+
 	if (dato == '') {
 		$('#benef-help').html(error).fadeIn(500).fadeOut(8000);
 	codeerror = 0;
@@ -232,13 +231,6 @@ var revisar_info = function(){
 	if (dato == '') {
 		$('#monto-help').html(error).fadeIn(500).fadeOut(8000);
 		$('#monto').focus();
-		codeerror = 0;
-	}else{
-		codeerror = 1;
-	}
-	dato = $('#fecha_cheq').val();
-	if (dato == '') {
-		$('#fecha_cheq-help').html(error).fadeIn(500).fadeOut(8000);
 		codeerror = 0;
 	}else{
 		codeerror = 1;
@@ -285,7 +277,10 @@ var revisar_calcu = function(){
 	
 }
 
+
 //Calculo de dias habiles
+
+
 var dia_habiles = function(dia,fecha){
 	switch(dia) {
 	    case 6:
@@ -348,3 +343,13 @@ var cal_dias = function(fecha){
 }
 //Calculo de dias habiles
 
+
+// Cambio de fecha on change
+var cambio_fecha = function(){
+		var fecha01 = $('#fecha_cheq').val();
+		$('#fecha').text(fecha01);
+		var fecha = moment(fecha01);
+		dia = fecha.day();
+		dia_habiles(dia,fecha);
+}
+// Cambio de fecha on change
