@@ -63,7 +63,27 @@ $(document).ready(function() {
 
     $('#formulario_dinamico').on("change","#forma_pago_interes",function(){
 
-        //Elemntos de dom que cargaron despues
+        forma_pago = $('#forma_pago_interes').val()
+
+          switch(forma_pago) {
+            case 'consigancion':
+              $('#cuenta').fadeIn();
+                //cargar cuentas
+                    $.ajax({
+                      url: 'php/consulta_bancos_trust.php?consigno',
+                      type: 'POST',
+                    })
+                    .done(function(data) {
+                       $('#formulario_dinamico #cuenta-consigno').append(data)
+                    }) 
+                //cargar cuentas
+            break;
+            case 'efectivo':
+              $('#cuenta').fadeOut();
+            break;
+            default:
+                console.log('default');
+        }
 
     })
 
@@ -87,12 +107,13 @@ $(document).ready(function() {
               $('#formulario_dinamico #fecha_cheq').attr('min', fechamin.format("YYYY-MM-DD"));
             });
 
-          $('#formulario_dinamico').load('php/formulario_01_cheques_pendientes.php');
+          $('#formulario_dinamico').load('php/formulario_01_cheques_devueltos.php');
+            setTimeout("$('#formulario_dinamico #cuenta').hide();", 100);
           $("#formulario_dinamico").trigger('create');
-
           $('#form_cheques').prop('action', 'php/e_registro_cheques_aplazar_devueltos.php');
 
        }else{
+
           $('#formulario_dinamico').html('');
           $('#form_cheques').prop('action', 'php/e_registro_cheques_consignado.php');
           $( "#BtnGuardar" ).prop( "disabled", false );

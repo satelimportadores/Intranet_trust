@@ -605,17 +605,24 @@ $user_permisos = $_SESSION["nivel_permisos"];
                         </div>
                       </div>
 
-                                            <div class="form-group">
+                      <div class="form-group">
                         <label for="fecha_cheque" class=" control-label">Fecha del cheque</label>
                         <div class="">
                           <input type="text" class="form-control" name="fecha_cheque" id="fecha_cheque" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
                         </div>
                       </div>
 
+                      <div class="form-group">
+                        <label for="fecha_cheque_efectivo" class=" control-label">Fecha que fue efectivo cheque</label>
+                        <div class="">
+                          <input type="text" class="form-control" name="fecha_cheque_efectivo" id="fecha_cheque_efectivo" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
                                             <div class="form-group">
                         <label for="estado" class=" control-label">Estado</label>
                         <div class="">
-                          <input type="text" class="form-control" name="estado" id="estado" parsley-trigger="change" readonly="readonly" parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                          <input type="text" class="form-control" name="estado" id="estado"  readonly="readonly" >
                         </div>
                       </div>
 

@@ -93,6 +93,7 @@ modal_editar = function (cheque_id, numero_cheque){
                 $('#nom_banco').val(ArrayInfo[0].nom_banco);
                 $('#beneficiario').val(ArrayInfo[0].beneficiario);
                 $('#fecha_cheque').val(ArrayInfo[0].fecha_cheque);
+                
                 adjunto = ArrayInfo[0].adjunto;
                 $('#cheque_adjunto').html("<img src='archivos_cheques/"+adjunto+"'></div>");
                 estado = ArrayInfo[0].estado;
@@ -109,10 +110,13 @@ modal_editar = function (cheque_id, numero_cheque){
                         case 'devuelto':
                               $('#estado').val('Cheque devuelto');
                             break;
+                        case 'efectivo':
+                              $('#estado').val('Cheque efectivo');
+                            break;
                         default:
                             $('#estado').val('');
                   }
-                
+                $('#fecha_cheque_efectivo').val(ArrayInfo[0].fecha_efectivo);
                 $('#banco_gira').val(ArrayInfo[0].banco_gira);
                 $('#cuenta_banco').val(ArrayInfo[0].cuenta_banco);
                 $('#tipo_fondos').val(ArrayInfo[0].tipo_fondos);

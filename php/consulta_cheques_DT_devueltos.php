@@ -3,7 +3,7 @@
     include_once('class.conexion.php');
      //traer cheques   
           $cheques = new Conexion;
-          $sql01 = "SELECT ici.id,ici.fecha,ici.numero_cheque,ici.banco_emisor,ib.nom_banco,ici.beneficiario,ici.fecha_cheque,itc.cardname,ici.endoso,ici.estado FROM intranet_cheques_info ici INNER JOIN intranet_bancos ib ON ici.banco_emisor = ib.id INNER JOIN intranet_trust_clientes itc ON ici.beneficiario = itc.cardcode WHERE ici.estado = 'devuelto'";
+          $sql01 = "SELECT ici.id,ici.fecha,ici.numero_cheque,ici.banco_emisor,ib.nom_banco,ici.beneficiario,icid.fecha_cheque,itc.cardname,ici.endoso,ici.estado FROM intranet_cheques_info ici INNER JOIN intranet_cheques_info_detalle icid ON ici.id = icid.id_cheque INNER JOIN intranet_bancos ib ON ici.banco_emisor = ib.id INNER JOIN intranet_trust_clientes itc ON ici.beneficiario = itc.cardcode WHERE ici.estado = 'devuelto' and icid.activo = 1";
           $Rcheques = $cheques->query($sql01) or trigger_error($cheques->error);
   //traer cheques 
           $num_filas =  $Rcheques->num_rows;
