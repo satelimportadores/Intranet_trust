@@ -131,7 +131,9 @@ $('#formulario_dinamico').on("change","#forma_pago_interes",function(){
           type: 'POST',
         })
         .done(function(data) {
+           $("#formulario_dinamico #cuenta-consigno" ).empty();
            $('#formulario_dinamico #cuenta-consigno').append(data)
+
         })   
 
     }else{

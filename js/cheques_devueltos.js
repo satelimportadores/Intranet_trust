@@ -74,7 +74,8 @@ $(document).ready(function() {
                       type: 'POST',
                     })
                     .done(function(data) {
-                       $('#formulario_dinamico #cuenta-consigno').append(data)
+                       $("#formulario_dinamico #cuenta-consigno" ).empty();
+                       $('#formulario_dinamico #cuenta-consigno').append(data);
                     }) 
                 //cargar cuentas
             break;
@@ -116,6 +117,9 @@ $(document).ready(function() {
 
           $('#formulario_dinamico').html('');
           $('#form_cheques').prop('action', 'php/e_registro_cheques_consignado.php');
+          $('#formulario_dinamico').load('php/formulario_01_FormasPago.php');
+          $("#formulario_dinamico").trigger('create');
+          setTimeout("$('#formulario_dinamico #cuenta').hide();", 100);
           $( "#BtnGuardar" ).prop( "disabled", false );
        }
  });
