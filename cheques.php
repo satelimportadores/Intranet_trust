@@ -1276,6 +1276,72 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
     <section class="videocontent" id="video"></section>
 
+<!-- modal de tasa usura -->
+                  <div id="modal_tasa_usura" class="modal fade" data-backdrop="static" data-keyboard="false" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                       
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"></button>
+                          <h4 class="modal-title">Tasa de usura</h4>
+                        </div>
+                        <div class="modal-body">
+                              
+                              <!--Formulario-->
+                                                <!-- tile body -->
+                  <div class="tile-body">
+                    
+                     <form  action="" id="form_cheques" method="POST" accept-charset="utf-8">
+
+                      <input type="hidden" id="id_cheque" name="id_cheque" value="">
+                      <input type="hidden" id="fecha_inicial" name="fecha_inicial" value="">
+                      
+                      <div class="form-group">
+                        <label for="num_cheque" class=" control-label">Debe ingresar la tasa de usura para el mes de <?php date_default_timezone_set('America/Bogota'); setlocale(LC_ALL,"es_CO"); echo strftime("%B"); ?> </label>
+                        <div>
+                          puede consultar en : <a href="https://www.superfinanciera.gov.co/descargas?com=institucional&name=pubFile10948&downloadname=historicousura.xls" "email me">www.superfinanciera.gov.co</a>
+                          
+                        </div>
+                        <div class="">
+                          <input type="text" class="form-control" name="num_cheque" placeholder='2.93' id="num_cheque" parsley-trigger="change"  parsley-required="true" parsley-minlength="4" parsley-validation-minlength="1">
+                        </div>
+                      </div>
+
+                     
+
+
+
+                 </div>
+                  <!-- /tile body -->
+
+                              
+ 
+
+                              <br>
+                                  
+                                    <div class="form-group form-footer">
+                                       <div class="form-group">
+                                        <div class="col-sm-offset-4 col-sm-8">
+                                          <button type="submit" id="BtnGuardar" class="btn btn-green">Guardar</button>
+                                          <button type="button" id="descartar" class="btn btn-danger">Descartar</button>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                <div class="modal-footer">
+                                </div>
+                          </form> 
+                          <!--Formulario-->
+                      </div>
+                      
+                    </div>
+                  </div>
+                 </div> 
+
+<!-- modal de tasa usura -->
+
 
 
 

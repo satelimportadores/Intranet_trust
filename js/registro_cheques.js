@@ -2,6 +2,22 @@ var fecha01;
 var fecha;
 $(document).ready(function() {
 
+	//modal tasa de usuara
+	$('#modal_tasa_usura').modal('show');
+	$.ajax({
+		url: 'php/consulta_tasa_usura.php',
+		type: 'POST',
+		data: {'tasa_usura': 'tasa_usura'},
+	})
+	.done(function(data) {
+		
+	           var ArrayInfo = jQuery.parseJSON(data);
+                console.log(ArrayInfo[0].cantidad);
+	})
+	
+
+	//modal tasa de usuara
+
 	$('.banco').hide();
 	$('.cuenta').hide();
 	$('.endosohide').hide();
