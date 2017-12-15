@@ -96,7 +96,7 @@ $(document).ready(function() {
 
        }else{
           $('#formulario_dinamico').html('');
-          $('#form_cheques').prop('action', 'php/e_registro_cheques_consignado.php');
+          $('#form_cheques').prop('action', 'php/e_registro_cheques_efectivo.php');
           $( "#BtnGuardar" ).prop( "disabled", false );
 
        }

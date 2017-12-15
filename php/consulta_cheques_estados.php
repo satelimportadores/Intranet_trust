@@ -127,7 +127,7 @@
             $id_cheque = $_REQUEST['id_cheque'];
            //traer categorias   
               $fecha_cheque = new Conexion;
-              $sql01 = "SELECT fecha_cheque FROM intranet_cheques_info_detalle WHERE id_cheque  = \"$id_cheque\" LIMIT 1";
+              $sql01 = "SELECT id,fecha_cheque FROM intranet_cheques_info_detalle WHERE id_cheque = \"$id_cheque\" ORDER BY id DESC LIMIT 1";
               $Rfecha_cheque = $fecha_cheque->query($sql01) or trigger_error($fecha_cheque->error);
           //traer fecha_cheque
           if (!$Rfecha_cheque) {
