@@ -468,8 +468,8 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
                 <!-- tile -->
-                <section class="tile color transparent-black">
-<form class="form-horizontal" role="form" action="php/e_registro_cheques.php" method="POST" enctype="multipart/form-data" parsley-validate id="basicvalidations">
+                <section class="tile color transparent-black" id="contenido">
+<form class="form-horizontal" role="form" action="php/e_registro_cheques.php" id="form_cheques" method="POST" enctype="multipart/form-data" parsley-validate id="basicvalidations">
 
             <fieldset id="info">
                   <!-- tile header -->
@@ -826,25 +826,26 @@ $user_permisos = $_SESSION["nivel_permisos"];
 
 
           <!-- content main container -->
-          <div class="main">
+          <div class="main" id="contenido02">
 
 
 
 
-            <!-- row -->
-            <div class="row">
+                  <!-- row -->
+                  <div class="row">
 
-              <!-- col 12 -->
-              <div class="col-md-12">
+                          <!-- col 12 -->
+                          <div class="col-md-12">
+
+                                Impresion del recibo
+
+                          </div>
+                          <!-- /col 12 -->
 
 
-              </div>
-              <!-- /col 12 -->
-
-
-              
-            </div>
-            <!-- /row -->
+                    
+                  </div>
+                  <!-- /row -->
           
 
 
