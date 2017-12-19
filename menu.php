@@ -1,6 +1,5 @@
 <?php 
-  //$pagina = basename($_SERVER['PHP_SELF']);
-  //echo $pagina; 
+session_start();
  ?>
 <ul class="nav navbar-nav side-nav" id="sidebar">
               

@@ -2,8 +2,8 @@ var fecha01;
 var fecha;
 $(document).ready(function() {
 
-	//modal tasa de usuara
-	$('#modal_tasa_usura').modal('show');
+	//modal tasa de usura
+	
 	$.ajax({
 		url: 'php/consulta_tasa_usura.php',
 		type: 'POST',
@@ -12,11 +12,50 @@ $(document).ready(function() {
 	.done(function(data) {
 		
 	           var ArrayInfo = jQuery.parseJSON(data);
-                console.log(ArrayInfo[0].cantidad);
+	           	cantidad = ArrayInfo[0].cantidad;
+	           	tasa_usura = ArrayInfo[0].tasa_usura;
+	           		//console.log('cantidad: '+cantidad);
+					//console.log('tasa_usura: '+tasa_usura);
+	           		//funcion para modal de tasa de usura
+	           			if (cantidad >= 1) {
+	           				$('#modal_tasa_usura').modal('hide');
+	           					//crear variable de sesion tasa de usura
+	           						$.ajax({
+	           							url: 'php/consulta_VS_usura.php',
+	           							type: 'POST',
+	           							data: {'c_tasa_usura': tasa_usura},
+	           						})
+	           						.done(function(data) {
+	           							//console.log("tasa de usura: "+data);
+	           						})
+	           					//crear variable de sesion tasa de usura
+	           			}else{
+	           				$('#modal_tasa_usura').modal('show');
+	           				$('#error').fadeOut('fast');
+	           				$( "#BtnGuardar" ).prop( "disabled", true );
+	           			}
+	           		//funcion para modal de tasa de usura
 	})
+
+	$( "#tasa_usura" ).keyup(function() {
+  		texto = $("#tasa_usura").val();
+				var reg = /[0-9]{1}\.[0-9]{2}/;
+
+  				 if(reg.test(texto)) {
+  				 		$('#error').hide();
+ 				 		$( "#BtnGuardar" ).prop( "disabled", false );
+
+				    } else { 
+				    	$( "#BtnGuardar" ).prop( "disabled", true );
+				    	$('#error').fadeIn();
+				 		$('#error').html('<strong>Tasa de usura! </strong>El formata que esta ingresando es invalido, ejemplo: <em>2.93</em>');
+				 		$("#tasa_usura").focus();
+				} 
+
+	});
 	
 
-	//modal tasa de usuara
+	//modal tasa de usura
 
 	$('.banco').hide();
 	$('.cuenta').hide();
@@ -42,6 +81,37 @@ $(document).ready(function() {
 		cambio_fecha();
 	});
 
+
+//formulario 1
+
+	$('#form_TasaUsura').submit(function(e) {
+		e.preventDefault();
+
+			//guardar tasa de usura en la base de datos
+			var data = $('#form_TasaUsura').serializeArray();
+				$.ajax({
+					url: 'php/e_tasa_usura.php',
+					type: 'POST',
+					data: data,
+				})
+				.done(function(datos) {
+					//console.log("success: "+datos);
+					$('#modal_tasa_usura').modal('hide');
+				})
+				
+			//guardar tasa de usura en la base de datos
+		
+	})
+
+//formulario 1
+
+	$('#Descartar').click(function() {
+	  $('#modal_tasa_usura').modal('hide');
+	  $('#form_TasaUsura')[0].reset();
+	  $('#tasa_usura').text();
+	  window.location='inicio.php';
+	});
+
 	$('#fondos').on('change',function() {
 		fondos = $('#fondos').val();
 		if (fondos == 'cheque') {
@@ -53,9 +123,6 @@ $(document).ready(function() {
 			$('.cuenta').fadeOut();
 		}
 	});
-
-
-
 
 
 	//abre endoso
@@ -89,7 +156,7 @@ $(document).ready(function() {
 							data: {'cuentas_trust': 'cuentas_trust','banco': banco},
 						})
 						.done(function(data) {
-							console.log("success"+data);
+							//console.log("success"+data);
 							$('#cuenta_gira').empty();
 							var ArrayDatos = JSON.parse(data);
 										$('#cuenta_gira').append( '<option value="">Seleccione una cuenta</option>' );
@@ -101,7 +168,7 @@ $(document).ready(function() {
 							$('.banco').fadeIn();
 						})
 						.fail(function(data) {
-							console.log("error"+data);
+							//console.log("error"+data);
 						});					
 					//ajax traer cuentas
 				}else{
