@@ -32,6 +32,11 @@ session_start();
                         </a>
                       </li>
                       <li>
+                        <a href="cheques_imprimir_recibo.php">
+                          <i class="fa fa-caret-right"></i>Cheques imprimir recibos
+                        </a>
+                      </li>
+                      <li>
                         <a href="cheques_pendientes.php">
                           <i class="fa fa-caret-right"></i>Cheques pendientes
                         </a>

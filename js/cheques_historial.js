@@ -57,21 +57,6 @@ $(document).ready(function() {
 	});
 
 
-
-
-
-//Boton descartar
-$('#descartar').click(function() {
-  $('#estado_cheque option:selected').removeAttr('selected');
-  $('#estado_cheque').trigger('chosen:updated');
-  $('#modal_editar').modal('hide');
-  $('#form_cheques')[0].reset();
-  $('#formulario_dinamico').html('');
-
-});
-//Boton descartar
-
-
 });
 
 //FUNCIONES

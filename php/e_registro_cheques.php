@@ -1,5 +1,6 @@
 <?php 
 
+session_start();
 
 function normaliza ($cadena){
     $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞ
@@ -15,6 +16,7 @@ date_default_timezone_set('America/Bogota');
 include('class.conexion.php');
 $con = new conexion;
 if (isset($_REQUEST['envio'])) {
+	$tasa_usura = $_SESSION["tasa_usura"];
 	$fecha =  date("Y-m-d H:i:s");
 	$banco = $_REQUEST['bancos'];
 	$cheque = $_REQUEST['num_cheq'];
@@ -71,9 +73,9 @@ if (isset($_REQUEST['envio'])) {
 
 	//insertar en la base de datos
 			if (isset($archivo)) {
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira','$fondos')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura')";
 			}else{
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira','$fondos')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura')";
 			}
 			
 		$con->query($query01) or trigger_error($con->error);
