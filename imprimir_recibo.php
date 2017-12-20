@@ -475,9 +475,9 @@ date_default_timezone_set('America/Bogota');
                       <div class="col-md-4">
                         <h3><strong><?php   echo $fecha_mes_dia; ?></strong>, <?php   echo $fecha_year; ?></h3>
 
-                        <h4>From</h4>
+                        <h4>TRUST CORPORATION</h4>
 
-                        <img src="assets/images/themeforest.png" class="img-responsive" alt="">
+                        <img src="assets/images/Logo_trust_recibo.png" class="img-responsive" alt="">
 
                         <address>
                           <strong>ThemeForest Web Services, Inc.</strong><br/>
