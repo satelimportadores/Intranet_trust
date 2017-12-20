@@ -782,7 +782,7 @@ $user_permisos = $_SESSION["nivel_permisos"];
                       <div class="form-group form-footer">
                         <div class="col-sm-offset-4 col-sm-8">
                         <button type="button" class="btn btn-danger" id="btn-4" >Anterior</button>
-                          <button type="submit" id="envio" name="envio" class="btn btn-primary">Enviar</button>
+                          <button type="submit" id="envio"  name="envio" class="btn btn-primary">Enviar</button>
 
                           
                         </div>
@@ -837,7 +837,6 @@ $user_permisos = $_SESSION["nivel_permisos"];
                           <!-- col 12 -->
                           <div class="col-md-12">
 
-                                Impresion del recibo
 
                           </div>
                           <!-- /col 12 -->

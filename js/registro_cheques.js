@@ -2,7 +2,6 @@ var fecha01;
 var fecha;
 $(document).ready(function() {
 
-	$('#contenido02').hide();
 
 	//modal tasa de usura
 	
@@ -242,38 +241,6 @@ $(document).ready(function() {
      }); 
     // Funcion carga de select cuando input file cambia
 
-
-
-    //prevenir el envio del formulario principal para imprimir recibo
-
-	$('#form_cheques').submit(function(e) {
-		e.preventDefault();
-
-			$('#contenido').fadeOut('slow');
-			$('#contenido02').fadeIn('slow');
-
-			//guardar tasa de usura en la base de datos
-			var data = $('#form_TasaUsura').serializeArray();
-				$.ajax({
-					url: 'php/e_tasa_usura.php',
-					type: 'POST',
-					data: data,
-				})
-				.done(function(datos) {
-					//console.log("success: "+datos);
-					$('#modal_tasa_usura').modal('hide');
-				})
-				
-			//guardar tasa de usura en la base de datos
-		
-	})
-
-
-
-    //prevenir el envio del formulario principal para imprimir recibo
-
-
-	
 	
 });
 
