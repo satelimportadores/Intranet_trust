@@ -536,7 +536,7 @@ date_default_timezone_set('America/Bogota');
 
                     <tbody>
                       <tr>
-                        <td>1</td>
+                        <td id="cheque_id">1</td>
                         <td class="description">
                           <strong id="nom_banco">Lorem Ipsum</strong>
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

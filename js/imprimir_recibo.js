@@ -55,4 +55,6 @@ organizar_info = function(ArrayInfo){
             	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
             tasa_usura = ArrayInfo[0].tasa_usura;
             $('#tasa_usura').html(tasa_usura);
+            cheque_id = ArrayInfo[0].id;
+            $('#cheque_id').html(cheque_id);
 }
