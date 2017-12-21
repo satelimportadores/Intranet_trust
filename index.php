@@ -1,3 +1,7 @@
+<?php
+session_start();
+ echo $_SESSION["tasa_usura"]; 
+ ?>
 <!DOCTYPE html>
 <html>
   <head>

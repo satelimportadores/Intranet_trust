@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
-  print "<script>alert(\"Acceso invalido!\");window.location='index.php';</script>";
+  print "<script>alert(\"Acceso invalido!\");window.location='inicio.php';</script>";
 }
 $user_id = $_SESSION["user_id"];
 $user_nombre = $_SESSION["user_nombre"];
@@ -447,7 +447,7 @@ date_default_timezone_set('America/Bogota');
   <!--imprecion de recibo -->
 
           <!-- content main container -->
-          <div class="main">
+          <div class="main" id='seccion01'>
 
 
             <menu class="no-print">
@@ -480,15 +480,15 @@ date_default_timezone_set('America/Bogota');
                         <img src="assets/images/Logo_trust_recibo.png" class="img-responsive" alt="">
 
                         <address>
-                          <strong>ThemeForest Web Services, Inc.</strong><br/>
-                          Jimmy Bettery<br/>
-                          <a href="#">jim.bettery@themeforest.com</a>
+                          <strong>TRUST CORPORATION S.A.S</strong><br/>
+                          <span id="responsable">Jimmy Bettery</span><br/>
+                          <a href="mailto:servicioalcliente@trustcorporation.com.co">servicioalcliente@trustcorporation.com.co</a>
                         </address>
 
                         <address>
-                          121 King Street<br/>
-                          Melbourne Victoria 3000<br/>
-                          Australia
+                          Calle 13 # 26 -33<br/>
+                          Ricaurte<br/>
+                          Bogotá - Colombia
                         </address>
                       </div>
 
@@ -503,20 +503,19 @@ date_default_timezone_set('America/Bogota');
                         <h4>Cliente</h4>
 
                         <address>
-                          <strong>Lorem Ipsum, Inc.</strong><br/>
-                          John Douey<br/>
-                          <a href="#">john.douey@lorem.com</a>
+                          <strong id="cardname">Lorem Ipsum, Inc.</strong><br/>
+                          <span id="beneficiario"></span><br/>
+                          <span id="telefono"></span>
                         </address>
 
                         <address>
-                          48 Lorem Street<br/>
-                          Bratislava 215 95<br/>
-                          Slovakia
+                          <span id="ciudad"></span><br/>
+                          <span id="direccion"></span><br/>
                         </address>
 
                         <dl class="dl-horizontal total">
                           <dt>Total</dt>
-                          <dd><strong>3,150.69</strong> USD</dd>
+                          <dd>$ <strong id="valor_girar"></strong></dd>
                         </dl>
 
                       </div>
@@ -528,11 +527,10 @@ date_default_timezone_set('America/Bogota');
 
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th class="description">Description</th>
-                        <th>Quantity</th>
-                        <th style="min-width: 80px;">Unit Price</th>
-                        <th>Subtotal</th>
+                        <th>ID</th>
+                        <th class="description">Descripción cheque</th>
+                        <th style="min-width: 80px;">Monto cheque</th>
+                        <th>Cambio</th>
                       </tr>
                     </thead>
 
@@ -540,43 +538,14 @@ date_default_timezone_set('America/Bogota');
                       <tr>
                         <td>1</td>
                         <td class="description">
-                          <strong>Lorem Ipsum</strong>
+                          <strong id="nom_banco">Lorem Ipsum</strong>
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </td>
-                        <td>3</td>
-                        <td>12.36 USD</td>
-                        <td>36.12 USD</td>
+                        <td id="monto"></td>
+                        <td id="cambio"></td>
                       </tr>
                       <tr>
-                        <td>2</td>
-                        <td class="description">
-                          <strong>Lorem Ipsum</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </td>
-                        <td>5</td>
-                        <td>250 USD</td>
-                        <td>1250 USD</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="description">
-                          <strong>Lorem Ipsum</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </td>
-                        <td>2</td>
-                        <td>620 USD</td>
-                        <td>1240 USD</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="description">
-                          <strong>Lorem Ipsum</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </td>
-                        <td>1</td>
-                        <td>945.32 USD</td>
-                        <td>945.32 USD</td>
-                      </tr>
+
                     </tbody>
 
                   </table>
@@ -588,16 +557,18 @@ date_default_timezone_set('America/Bogota');
                       <div class="col-md-6">
                         <section class="summary">
                           <dl class="dl-horizontal">
-                            <dt>Subtotal</dt>
-                            <dd><strong>2,980.45</strong> USD</dd>
-                            <dt>Shipping</dt>
+                            <dt>Interés</dt>
+                            <dd><strong id="tasa_usura"></strong> %</dd>
+                            <dt>Papelería</dt>
                             <dd><strong>0</strong> USD</dd>
-                            <dt>VAT</dt>
+                            <dt>Estudio</dt>
+                            <dd><strong>120.24</strong> USD</dd>
+                            <dt>4 X 1000</dt>
                             <dd><strong>120.24</strong> USD</dd>
                           </dl>
                           <dl class="dl-horizontal total">
                             <dt>Total</dt>
-                            <dd><strong>3,150.69</strong> USD</dd>
+                            <dd>$ <strong id="total_final"></strong></dd>
                           </dl>
                         </section>
                       </div>
@@ -640,8 +611,10 @@ date_default_timezone_set('America/Bogota');
     <!-- seccion 2 -->
       
 
-           <section class="invoice">
-                seccion 2
+           <section class="invoice" id="seccion02">
+                    <div class="alert alert-red">
+                      <strong>No existen registros con ese ID!</strong> Volver a la pagina de inicio <em><a href="inicio.php">Volver</a></em>.
+                    </div>
            </section>
         
 

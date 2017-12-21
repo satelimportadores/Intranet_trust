@@ -6,7 +6,7 @@ include('class.conexion.php');
 
 
 	if (isset($_REQUEST['tasa_usura'])) {
-
+	session_start();
 	$tasa_usura = $_REQUEST['tasa_usura'];
 	date_default_timezone_set('America/Bogota');
 	$fecha = date("Y-m-d");
@@ -18,7 +18,7 @@ include('class.conexion.php');
 				$con->query($query) or trigger_error($con->error);
 
 						$_SESSION["tasa_usura"]=$tasa_usura;
-
+						echo $_SESSION["tasa_usura"];
 			//Guardar comentario en la base de datos
 				}
 			

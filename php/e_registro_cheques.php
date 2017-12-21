@@ -69,20 +69,46 @@ if (isset($_REQUEST['envio'])) {
 			move_uploaded_file($file['tmp_name'][0], $dir);
 	}
 
-;
+	//consultar numero de recibo
+		$recibosql = 'SELECT id FROM intranet_cheques_recibos ORDER BY id DESC LIMIT 1';
+			$recibo = $con->query($recibosql) or trigger_error($con->error);
+			$row_cnt = $recibo->num_rows;
+				if ($row_cnt == 0) {
+					$id_recibo = 1;
+				}else{
+					$row = $recibo->fetch_array();
+					$id_recibo = intval($row['id']+1);
+					echo $id_recibo;
+				}
+
+
+
+	//consultar numero de recibo
+
+
 
 	//insertar en la base de datos
 			if (isset($archivo)) {
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura,id_recibo) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '$archivo', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura','$id_recibo')";
 			}else{
-				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura')";
+				$query01 = "INSERT INTO intranet_cheques_info(fecha, banco_emisor, numero_cheque, beneficiario,  fecha_cheque, endoso, responsable,  estado, adjunto, banco_gira, cuenta_gira,tipo_fondos,tasa_usura,id_recibo) VALUES ('$fecha',$banco,'$cheque','$beneficiario','$fecha_con','$endoso','$resp','por_consig', '', '$banco_gira', '$cuenta_gira','$fondos','$tasa_usura','$id_recibo')";
 			}
 			
 		$con->query($query01) or trigger_error($con->error);
+
 			$idinsertado = $con->insert_id;
 		$query02 = "INSERT INTO intranet_cheques_info_detalle( id_cheque, fecha_cheque, interes, dias, valor_interes, monto, valor_girar,activo,tipo_fondos) VALUES ('$idinsertado','$fecha_con','$int','$dias','$val_int', '$monto', '$val_cheq',1,'$fondos')";
 		$con->query($query02) or trigger_error($con->error);
 	//insertar en la base de datos
+
+
+				//guardar numero de recibo en la base de datos
+					$guardar_recibo = "INSERT INTO intranet_cheques_recibos (id, cheque_id, fecha_recibo) VALUES ('$id_recibo','$idinsertado','$fecha') ";
+					$con->query($guardar_recibo) or trigger_error($con->error);
+				//guardar numero de recibo en la base de datos
+
+		$con->close();
+
 header('Location: ../inicio.php');
 }
 	
