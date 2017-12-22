@@ -451,9 +451,8 @@ date_default_timezone_set('America/Bogota');
 
 
             <menu class="no-print">
-              <button type="button" class="btn btn-greensea"><i class="fa fa-usd"></i> Pay</button>
               <a href="javascript:window.print()" class="btn btn-slategray"><i class="fa fa-print"></i> Print</a>
-              <button type="button" class="btn btn-slategray"><i class="fa fa-file-pdf-o"></i> Export to PDF</button>
+              <button type="button" class="btn btn-slategray" id="savePDF"><i class="fa fa-file-pdf-o"></i> Export to PDF</button>
               <button type="button" class="btn btn-slategray"><i class="fa fa-envelope"></i> Send by Email</button>
             </menu>
 
@@ -515,7 +514,7 @@ date_default_timezone_set('America/Bogota');
 
                         <dl class="dl-horizontal total">
                           <dt>Total</dt>
-                          <dd>$ <strong id="valor_girar"></strong></dd>
+                          <dd><strong id="valor_girar"></strong></dd>
                         </dl>
 
                       </div>
@@ -568,7 +567,7 @@ date_default_timezone_set('America/Bogota');
                           </dl>
                           <dl class="dl-horizontal total">
                             <dt>Total</dt>
-                            <dd>$ <strong id="total_final"></strong></dd>
+                            <dd><strong id="total_final"></strong></dd>
                           </dl>
                         </section>
                       </div>
@@ -1056,6 +1055,7 @@ date_default_timezone_set('America/Bogota');
 
     <script src="js/menu.js"></script>
     <script src="js/imprimir_recibo.js"></script>
+    <script src="js/jspdf.min.js"></script>
 
 
 

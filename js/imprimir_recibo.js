@@ -1,4 +1,13 @@
 $(document).ready(function() {
+
+	var doc = new jsPDF();
+
+	var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};		
+
 	$('#seccion02').fadeOut();
 	//traer numeracion del ultimo recibo
 		$.ajax({
@@ -22,6 +31,20 @@ $(document).ready(function() {
 		})
 		
 	//traer numeracion del ultimo recibo
+
+
+//Crear PDF
+	$('#savePDF').click(function () {   
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('recibo'+cheque_id+'.pdf');
+});
+//Crear PDF
+
+
+
 });
 
 organizar_info = function(ArrayInfo){
@@ -45,15 +68,15 @@ organizar_info = function(ArrayInfo){
             $('#direccion').html(direccion);
             valor_girar = ArrayInfo[0].valor_girar;
             $('#valor_girar').html(valor_girar);
-            	$('#valor_girar').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#valor_girar').priceFormat({ prefix: ' $ ',centsLimit: 0});
 			nom_banco = ArrayInfo[0].nom_banco;
 			numero_cheque = ArrayInfo[0].numero_cheque;
-            	$('#nom_banco').html(nom_banco+' Cheque numero: '+numero_cheque);
+            	$('#nom_banco').html(nom_banco+' Cheque #: '+numero_cheque);
             monto = ArrayInfo[0].monto;
             $('#monto').html(monto);
-            	$('#monto').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#monto').priceFormat({ prefix: ' $ ',centsLimit: 0});
             $('#cambio').html(valor_girar);
-            	$('#cambio').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#cambio').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
          	dias = ArrayInfo[0].dias;
             $('#dias').html(dias);
@@ -61,28 +84,28 @@ organizar_info = function(ArrayInfo){
 
             interesUsuaraDiario = ((((tasa_usura/100)*monto)/30)*dias);
             $('#tasa_usura').html(Math.round(interesUsuaraDiario));
-            	$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#tasa_usura').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
             papeleriaDiario = ((((0.0075)*monto)/30)*dias);
-            $('#papeleria').html(Math.round(papeleriaDiario, -2));
-            	$('#papeleria').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            $('#papeleria').html(Math.round(papeleriaDiario));
+            	$('#papeleria').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
-            cuatroxmilDiario = ((((0.004)*monto)/30)*dias);
+            cuatroxmilDiario = ((((0.004)*monto)));
             $('#4x1000').html(Math.round(cuatroxmilDiario));
-            	$('#4x1000').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#4x1000').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
            subtotal = ((monto-valor_girar)-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario) 	
 
            $('#estudio').html(Math.round(subtotal));
-           		$('#estudio').priceFormat({clearPrefix: false, clearSuffix: true, Preffix: '$',centsLimit: 0});
+           		$('#estudio').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
            Total =(monto-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario-subtotal);
 
            $('#total_final').html(Math.round(Total));
-            	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+            	$('#total_final').priceFormat({ prefix: ' $ ',centsLimit: 0});
 
             interes_pactado = ArrayInfo[0].interes;
-            $('#interes_pactado').html('interés pactado: '+interes_pactado);
+            $('#interes_pactado').html( 'Los días establecidos son: '+ dias+ ' el interes pactado es: '+ interes_pactado );
 
             
 }
