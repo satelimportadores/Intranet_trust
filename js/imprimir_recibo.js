@@ -26,6 +26,9 @@ $(document).ready(function() {
 
 organizar_info = function(ArrayInfo){
 
+	            cheque_id = ArrayInfo[0].id;
+            $('#cheque_id').html(cheque_id);
+
 			numero_recibo = ArrayInfo[0].id_recibo;
             $('#numero_recibo').html(numero_recibo);
             responsable = ArrayInfo[0].responsable;
@@ -51,10 +54,32 @@ organizar_info = function(ArrayInfo){
             	$('#monto').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
             $('#cambio').html(valor_girar);
             	$('#cambio').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
-            $('#total_final').html(valor_girar);
-            	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+
+         	dias = ArrayInfo[0].dias;
+            $('#dias').html(dias);
             tasa_usura = ArrayInfo[0].tasa_usura;
-            $('#tasa_usura').html(tasa_usura);
-            cheque_id = ArrayInfo[0].id;
-            $('#cheque_id').html(cheque_id);
+
+            interesUsuaraDiario = ((((tasa_usura/100)*monto)/30)*dias);
+            $('#tasa_usura').html(interesUsuaraDiario);
+
+            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
+            papeleriaDiario = ((((0.0075)*monto)/30)*dias);
+            $('#papeleria').html(papeleriaDiario);
+
+            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
+            cuatroxmilDiario = ((((0.004)*monto)/30)*dias);
+            $('#4x1000').html(cuatroxmilDiario);
+            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
+
+           subtotal = ((monto-valor_girar)-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario) 	
+
+           $('#estudio').html(subtotal);
+
+           $('#total_final').html(monto-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario-subtotal);
+            //	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+
+            interes_pactado = ArrayInfo[0].interes;
+            $('#interes_pactado').html('interés pactado: '+interes_pactado);
+
+            
 }

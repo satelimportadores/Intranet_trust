@@ -539,7 +539,7 @@ date_default_timezone_set('America/Bogota');
                         <td id="cheque_id">1</td>
                         <td class="description">
                           <strong id="nom_banco">Lorem Ipsum</strong>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                          <p id="interes_pactado"></p>
                         </td>
                         <td id="monto"></td>
                         <td id="cambio"></td>
@@ -558,13 +558,13 @@ date_default_timezone_set('America/Bogota');
                         <section class="summary">
                           <dl class="dl-horizontal">
                             <dt>Interés</dt>
-                            <dd><strong id="tasa_usura"></strong> %</dd>
-                            <dt>Papelería</dt>
-                            <dd><strong>0</strong> USD</dd>
+                            <dd><strong id="tasa_usura"></strong></dd>
                             <dt>Estudio</dt>
-                            <dd><strong>120.24</strong> USD</dd>
+                            <dd><strong id="estudio"></strong></dd>
+                            <dt>Papelería</dt>
+                            <dd><strong id="papeleria"></strong></dd>
                             <dt>4 X 1000</dt>
-                            <dd><strong>120.24</strong> USD</dd>
+                            <dd><strong id="4x1000"></strong></dd>
                           </dl>
                           <dl class="dl-horizontal total">
                             <dt>Total</dt>
