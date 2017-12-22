@@ -60,23 +60,26 @@ organizar_info = function(ArrayInfo){
             tasa_usura = ArrayInfo[0].tasa_usura;
 
             interesUsuaraDiario = ((((tasa_usura/100)*monto)/30)*dias);
-            $('#tasa_usura').html(interesUsuaraDiario);
+            $('#tasa_usura').html(Math.round(interesUsuaraDiario));
+            	$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
 
-            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
             papeleriaDiario = ((((0.0075)*monto)/30)*dias);
-            $('#papeleria').html(papeleriaDiario);
+            $('#papeleria').html(Math.round(papeleriaDiario, -2));
+            	$('#papeleria').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
 
-            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
             cuatroxmilDiario = ((((0.004)*monto)/30)*dias);
-            $('#4x1000').html(cuatroxmilDiario);
-            	//$('#tasa_usura').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 2});
+            $('#4x1000').html(Math.round(cuatroxmilDiario));
+            	$('#4x1000').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
 
            subtotal = ((monto-valor_girar)-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario) 	
 
-           $('#estudio').html(subtotal);
+           $('#estudio').html(Math.round(subtotal));
+           		$('#estudio').priceFormat({clearPrefix: false, clearSuffix: true, Preffix: '$',centsLimit: 0});
 
-           $('#total_final').html(monto-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario-subtotal);
-            //	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
+           Total =(monto-interesUsuaraDiario-papeleriaDiario-cuatroxmilDiario-subtotal);
+
+           $('#total_final').html(Math.round(Total));
+            	$('#total_final').priceFormat({clearPrefix: true, clearSuffix: true, suffix: '$',centsLimit: 0});
 
             interes_pactado = ArrayInfo[0].interes;
             $('#interes_pactado').html('interés pactado: '+interes_pactado);
